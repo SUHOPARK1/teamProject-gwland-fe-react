@@ -1,35 +1,33 @@
 import React, { useEffect, useState } from 'react'
 import Styles from '../sytles/reviewInput.module.scss'
 import ReactStars from "react-rating-stars-component";
-import Axios from 'axios'
-
+import axios from 'axios'
+import moment from 'moment';
 
 export default () => {
     const [rate, setRate] = useState(0)
     const [textsection, setSection] = useState("")
     const [textlength, setLength] = useState(0)
+    const nowtime = moment().format('YYYY-MM-DD')
+
     const textArray = ['진짜 별로에요...', '별로에요...', '그냥 그래요.', '좋아요!', '너무 좋아요!!']
-    const ratingChanged = (newRating) => { 
-        console.log(newRating)
-        setRate(newRating); };
+    const ratingChanged = (newRating) => {
+        setRate(newRating);
+    };
     useEffect(() => { setLength(textsection.length) }, [textsection])
 
-    const reviewSumit = (e)=>{
+    const reviewSubmit = (e) => {
         e.preventDefault()
-        Axios.post('/review/save',{
-           pce_num: '',
-           rev_content: `{textsection}`,
-           rev_date: '',
-           rev_name:'',
-           rev_star:'rate',
-           num:''
-            
-           //pce_num, rev_content, rev_date, rev_name, rev_star, num
-        }).then((respone)=>{alert(respone)})
-        .catch((err)=>{alert(err)})
-    }
+        axios.post('/review/save', {
+            pceNum: '',
+            revContent: textsection,
+            revDate: nowtime,
+            revName: '',
+            revStar: `${rate}`,
 
-
+        }).then((respone) => { 
+            window.location.reload('/review/save')})
+            .catch((err) => { console.log(err) })}
 
     return <>
         <div className={Styles.kContent}>
@@ -66,7 +64,7 @@ export default () => {
                             <span className={Styles.txt_len}>{textlength}</span>
                             <span className={Styles.num_total}>/ 100</span>
                         </span>
-                        <button className={Styles.btn_enroll} onClick={reviewSumit} >등록</button>
+                        <button className={Styles.btn_enroll} onClick={reviewSubmit} >등록</button>
                     </div>
                 </div>
             </div>

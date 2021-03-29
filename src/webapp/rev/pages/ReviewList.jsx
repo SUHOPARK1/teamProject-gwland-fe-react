@@ -1,8 +1,8 @@
-import React from 'react'
+import React,{useState} from 'react'
 import Styles from '../sytles/reviewList.module.scss'
 
 export default () => {
-
+const [reviewList, setReviewList] = useState([])
 
     return <>
 
@@ -32,9 +32,11 @@ export default () => {
                             </em>
                         </div>
                     </div>
+                {/* {reviewList.map((reviewer) => {return<span>{reviewer}</span>})} */}
                     <div className={Styles.comment_info}>
                         <p className={Styles.txt_comment}>
                             <span>
+                               {/* {reviewer.content} */}
                                 블루보틀..커피 진짜 맛있는건 알겠는데ㅠㅠ가격이 사악함..삼청에서 방문했을때는 그래도 그만한 가치를 한다 생각했는데 여긴 전혀 아니예요..직원들 불친절하고 매장 위생 관리 전혀 안해요;;
                             </span>
                             <button className={Styles.btn_fold}></button>
