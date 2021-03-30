@@ -8,7 +8,7 @@ export default () => {
     const [rate, setRate] = useState(0)
     const [textsection, setSection] = useState("")
     const [textlength, setLength] = useState(0)
-    const nowtime = moment().format('YYYY-MM-DD HH:mm')
+    const nowtime = moment().format('YYYY.MM.DD.')
 
     const textArray = ['진짜 별로에요...', '별로에요...', '그냥 그래요.', '좋아요!', '너무 좋아요!!']
     const ratingChanged = (newRating) => {
@@ -19,12 +19,11 @@ export default () => {
     const reviewSubmit = (e) => {
         e.preventDefault()
         Axios.post('/review/save', {
-            pceNum: '',
+            contentid: '',
             revContent: textsection,
             revDate: nowtime,
             revName: '',
-            revStar: `${rate}`,
-
+            revStar: `${rate}`
         }).then((respone) => { 
             alert('성공적으로 등록 하셨습니다.')
             window.location.reload('/review/save')})
@@ -53,7 +52,7 @@ export default () => {
                                 <textarea placeholder="작성한 평가는 해당 장소에 공개되며, 다른 사용자가 볼 수 있습니다.&#13;&#10;또한, 수정하실 수 없습니다.&#13;&#10;글자수는 100자를 넘을 수 없습니다."
                                     id="text1"
                                     className={Styles.contents}
-                                    maxlength="100"
+                                    maxlength="150"
                                     onChange={(e) => { setSection(e.target.value) }}>
                                 </textarea>
                             </div>
@@ -63,7 +62,7 @@ export default () => {
                         <span className={Styles.num_letter_txt_len_warp}>
                             <span className={Styles.screen_out}>등록한 글자수:</span>
                             <span className={Styles.txt_len}>{textlength}</span>
-                            <span className={Styles.num_total}>/ 100</span>
+                            <span className={Styles.num_total}>/ 150</span>
                         </span>
                         <button className={Styles.btn_enroll} onClick={reviewSubmit} >등록</button>
                     </div>

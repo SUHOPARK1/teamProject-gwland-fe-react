@@ -36,7 +36,8 @@ export default () => {
       <Route path="/manage" component={ManagePage} />
 
 
-      <Route path="/test" component={ReviewList}/>
+      <Route path="/test" component={ReviewInput}/>
+      <Route path="/test2" component={ReviewList}/>
       
 
 

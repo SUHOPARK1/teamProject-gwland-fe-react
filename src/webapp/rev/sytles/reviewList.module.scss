@@ -135,33 +135,6 @@
         padding: 0;
         overflow: hidden;
     }
-    & .ico_star_star_rate{
-        line-height: 1.5;
-        color: #000;
-        font-family: Apple SD Gothic Neo,sans-serif;
-        font-size: 15px;
-        letter-spacing: 0;
-        list-style: none;
-        display: block;
-        background: url(//t1.daumcdn.net/localimg/localimages/07/2018/pc/ico_star_180723.png) no-repeat;
-        float: left;
-        width: 88px;
-        height: 16px;
-        background-position: 0 -60px;
-    }
-    & .ico_star_inner_star{
-        line-height: 1.5;
-        color: #000;
-        font-family: Apple SD Gothic Neo,sans-serif;
-        font-size: 15px;
-        letter-spacing: 0;
-        list-style: none;
-        display: block;
-        background: url(//t1.daumcdn.net/localimg/localimages/07/2018/pc/ico_star_180723.png) no-repeat;
-        height: 100%;
-        background-position: 0 -80px;
-        width: 20%;
-    }
     & .num_rate{
         color: #000;
         list-style: none;
@@ -226,36 +199,7 @@
         padding: 6px 0 0 2px;
         font-size: 13px;
     }
-    & .link_like{
-        font-family: Apple SD Gothic Neo,sans-serif;
-        letter-spacing: 0;
-        list-style: none;
-        font-size: 13px;
-        text-decoration: none;
-        float: left;
-        overflow: hidden;
-        color: #444;
-        line-height: 20px;
-    }
-    & .ico_comm_ico_like{
-        font-family: Apple SD Gothic Neo,sans-serif;
-        letter-spacing: 0;
-        list-style: none;
-        color: #444;
-        display: block;
-        overflow: hidden;
-        font-size: 1px;
-        line-height: 0;
-        background: url(//t1.daumcdn.net/localimg/localimages/07/2018/pc/ico_detail_200518.png) no-repeat;
-        background-repeat: no-repeat;
-        text-indent: -9999px;
-        float: left;
-        width: 13px;
-        height: 13px;
-        margin: 5px 4px 0 0;
-        background-position: -60px -50px;
-        margin-top: 3px;
-    }
+   
     & .num_g{
         list-style: none;
         font-size: 13px;
@@ -328,27 +272,8 @@
         float: left;
         color: #888;
     }
-    & .btn_fold{
-        list-style: none;
-        white-space: pre-wrap;
-        word-break: break-all;
-        border-radius: 0;
-        margin: 0;
-        padding: 0;
-        vertical-align: middle;
-        border: 0 none;
-        background-color: transparent;
-        cursor: pointer;
-        line-height: 1.5;
-        font-family: Apple SD Gothic Neo,sans-serif;
-        letter-spacing: 0;
-        display: none;
-        color: #999;
-        font-size: 14px;
-    }
     & .starIcon{
         width: 30px;
-
     }
     & .delete{
         line-height: 1.5;
@@ -362,6 +287,6 @@
         cursor: pointer;
     }
     & .liStyle{
-        margin-top: 20px;
+        margin-top: 30px;
     }
 }

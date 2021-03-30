@@ -1,18 +1,20 @@
 import React, { useState, useEffect, useCallback, Fragment } from "react";
 import styles from "../styles/PlaceList.module.scss";
 import { useCustomState } from "webapp/cmm/state/state";
-import { Link, useParams, useRouteMatch } from "react-router-dom";
+import { useParams, useRouteMatch } from "react-router-dom";
 import { animateScroll as scroll } from "react-scroll";
 
 import {
   BlogPagination,
-  BlogCategories,
   BlogFeatured,
   BlogSearch,
 } from "components/pages/Blog/components";
 
 import  Header  from "webapp/cmm/widgets/Header/Header";
 import BlogCard from "../BlogCard/BlogCard";
+import axios from "axios";
+import BlogCategories from "../BlogCategories/BlogCategories";
+import Button from 'components/elements/Button/Button'
 
 export default ({ sidebar = "left", layout = "grid", title = "title" }) => {
   const state = useCustomState()[0];
@@ -21,77 +23,47 @@ export default ({ sidebar = "left", layout = "grid", title = "title" }) => {
 
   const [currentPage, setCurrentPage] = useState(1);
   const postsPerPage = useState(6)[0];
-  const [postsArray, setPostsArray] = useState([]);
+  const [placeArray,setPlaceArray] = useState([]);
   const [pageTitle, setPageTitle] = useState(title);
 
-  const filterPosts = useCallback(() => {
-    let posts = [...state.data.posts];
-
-    if (category) {
-      posts = state.data.posts.filter(
-        (post) => category === post.category_id.toString()
-      );
-      setPageTitle(
-        "Category: " +
-          state.data.categories.filter((cat) => cat.id === category)[0].title
-      );
-    } else if (author) {
-      posts = state.data.posts.filter(
-        (post) => author === post.user_id.toString()
-      );
-      setPageTitle(
-        "Author: " +
-          state.data.users.filter((user) => user.id.toString() === author)[0]
-            .name
-      );
-    } else if (posting_date) {
-      posts = state.data.posts.filter(
-        (post) => posting_date === post.posting_date
-      );
-      setPageTitle("Date: " + posting_date);
-    } else if (query) {
-      posts = state.data.posts.filter((post) => post.title.includes(query));
-      setPageTitle("Search for: " + query);
-    } else {
-      setPageTitle(title);
-    }
-
-    return posts;
-  }, [
-    author,
-    category,
-    posting_date,
-    query,
-    state.data.categories,
-    state.data.posts,
-    state.data.users,
-    title,
-  ]);
+  
 
   useEffect(() => {
-    setPostsArray(
-      filterPosts().map((post, index) => {
-        return (
-          <BlogCard
-            key={index}
-            layout={layout}
-            post={post}
-            
-          />
+    if(category){
+      axios.get(`/place/cat/${category}`)
+      .then((data)=>{
+        setPlaceArray(
+          data.data.map((post, index) => {
+            return (
+              <BlogCard
+                key={index}
+                layout={layout}
+                post={post}/>
+            );
+          })
         );
       })
-    );
+    }else{
+    axios.get('/place/list')
+    .then(resp=>{
+      console.log(resp.data)
+      setPlaceArray(
+        resp.data.map((post, index) => {
+          return (
+            <BlogCard
+              key={index}
+              layout={layout}
+              post={post}/>
+          );
+        })
+      );
+    })
+    .catch((err)=> {
+    })
+  } 
     setCurrentPage(1);
   }, [
-    layout,
-    category,
-    author,
-    query,
-    posting_date,
-    url,
-    state.data.users,
-    state.data.categories,
-    filterPosts,
+
   ]);
 
   return (
@@ -111,7 +83,7 @@ export default ({ sidebar = "left", layout = "grid", title = "title" }) => {
           <BlogSearch />
           <BlogCategories data={state.data.categories} />
           <BlogFeatured data={state.data.posts} />
-          <Link to="/place/add">장소추가</Link>
+          <Button to={'/place/add'}>{"관광지 추가"}</Button>
         </aside>
 
         <article>
@@ -124,14 +96,14 @@ export default ({ sidebar = "left", layout = "grid", title = "title" }) => {
                 : null
             }
           >
-            {postsArray.slice(
+            {placeArray.slice(
               (currentPage - 1) * postsPerPage,
               currentPage * postsPerPage
             )}
           </div>
 
           <BlogPagination
-            amount={Math.ceil(postsArray.length / postsPerPage)}
+            amount={Math.ceil(placeArray.length / postsPerPage)}
             current={currentPage}
             next={() => {
               setCurrentPage((c) => c + 1);

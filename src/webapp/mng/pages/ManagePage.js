@@ -6,7 +6,7 @@ import Sidebar from '../components/Sidebar'
 
 export default ()=>{
     return <>
-    <div style={{position:"relative"},{}}>
+    <div style={{position:"relative"}}>
         <Sidebar/>
         <Switch>
             <Route path="/manage/userList" component={UserList}/>
