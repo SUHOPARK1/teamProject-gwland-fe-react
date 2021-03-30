@@ -346,5 +346,22 @@
         color: #999;
         font-size: 14px;
     }
+    & .starIcon{
+        width: 30px;
 
+    }
+    & .delete{
+        line-height: 1.5;
+        font-family: Apple SD Gothic Neo,sans-serif;
+        letter-spacing: 0;
+        list-style: none;
+        font-size: 13px;
+        text-decoration: none;
+        float: left;
+        color: #888;
+        cursor: pointer;
+    }
+    & .liStyle{
+        margin-top: 20px;
+    }
 }

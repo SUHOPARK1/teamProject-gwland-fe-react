@@ -11,7 +11,7 @@ export default ()=>{
         axios.get('http://localhost:8080/survey/all')
         .then(res=>{setSurveyList(res.data)})
     },[])
-
+    
     return <>
     <div className={styles.wrap}>
         <div className={styles.content}>
