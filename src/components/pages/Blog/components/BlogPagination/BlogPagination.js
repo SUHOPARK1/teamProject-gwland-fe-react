@@ -24,22 +24,27 @@ export default ({ amount, current, next, prev, goto }) => {
       >
         <i
           className="las la-long-arrow-alt-left"
-          style={{ marginRight: "5px" }}
+          style={{ marginRight: "px" }}
         />
-        <span>Previous</span>
+        <span>이전페이지</span>
       </button>
       <ul>
-        {current === amount && navigation[current - 3]}
+        {current === amount && navigation[current - 5]}
+        {navigation[current - 4]}
+        {navigation[current - 3]}
         {navigation[current - 2]}
         {navigation[current - 1]}
         {navigation[current]}
+
+
+
         {current === 1 && navigation[current + 1]}
       </ul>
       <button
         onClick={current !== amount ? next : e => e.preventDefault()}
         className={current === amount ? styles.disabled : null}
       >
-        <span>Next</span>
+        <span>다음페이지</span>
         <i
           className="las la-long-arrow-alt-right"
           style={{ marginLeft: "5px" }}

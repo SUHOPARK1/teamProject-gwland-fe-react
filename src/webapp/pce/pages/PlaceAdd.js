@@ -7,7 +7,7 @@ export default () => {
 
   return (
     <Fragment>
-      <Header img={state.data.header_bgs.contacts}>관광지 추가</Header>
+      
       <Contacts2 />
     </Fragment>
   );

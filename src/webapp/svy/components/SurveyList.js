@@ -1,7 +1,6 @@
 import { SvgIcon, Table, TableBody, TableCell, TableFooter, TableHead, TableRow } from '@material-ui/core'
 import React,{useEffect, useState} from 'react'
 import axios from 'axios'
-import styles from './SurveyList.module.scss'
 import Pagination from 'webapp/cmm/elements/Pagination/Pagination'
 import Card from 'webapp/cmm/layouts/Card/Card'
 
@@ -11,15 +10,15 @@ export default ()=>{
     const [surveyCount,setSurveyCount] = useState(0)
     const [currentPage,setCurrentPage] = useState(1)
     const pageSize = 10
-    const blockSize = 5
+    const blockSize = 10
 
     const deleteSurvey = (item)=>{
-        if(window.confirm('삭제하시겠습니까?')){
+        if(window.confirm('정말 설문조사 정보를 삭제하시겠습니까??')){
             axios.delete(`http://localhost:8080/survey/delete`,{
                 data:item
             })
             .then(
-                alert('삭제성공'),
+                alert('성공적으로 삭제하셨습니다.'),
                 window.location.reload()
             )
         }
@@ -57,12 +56,13 @@ export default ()=>{
         </TableBody>
         <TableFooter>
             <TableRow>
+                <td colSpan='6'>
                 <Pagination
                     pageCount={Math.ceil(surveyCount/pageSize)}
                     pageNum={currentPage}
                     setPage={setCurrentPage}
                     blockSize={blockSize}
-                />
+                /></td>
             </TableRow>
         </TableFooter>
     </Table>
