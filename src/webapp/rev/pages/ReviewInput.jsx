@@ -1,14 +1,15 @@
 import React, { useEffect, useState } from 'react'
-import Styles from '../sytles/reviewInput.module.scss'
+import Styles from '../sytles/ReviewInput.module.scss'
 import ReactStars from "react-rating-stars-component";
 import Axios from 'axios'
 import moment from 'moment';
 
-export default () => {
+export default ({contentid}) => {
     const [rate, setRate] = useState(0)
     const [textsection, setSection] = useState("")
     const [textlength, setLength] = useState(0)
     const nowtime = moment().format('YYYY.MM.DD.')
+    const inputUrl = '/review/save/'
 
     const textArray = ['진짜 별로에요...', '별로에요...', '그냥 그래요.', '좋아요!', '너무 좋아요!!']
     const ratingChanged = (newRating) => {
@@ -18,12 +19,12 @@ export default () => {
 
     const reviewSubmit = (e) => {
         e.preventDefault()
-        Axios.post('/review/save', {
-            contentid: '',
+        Axios.post(inputUrl, {
+            contentid: contentid,
             revContent: textsection,
             revDate: nowtime,
-            revName: '',
-            revStar: `${rate}`
+            revName: ``,
+            revStar: `${rate}`,
         }).then((respone) => { 
             alert('성공적으로 등록 하셨습니다.')
             window.location.reload('/review/save')})
@@ -49,7 +50,7 @@ export default () => {
                                 <span className={Styles.txt_word}> {rate == 0 ? '평가해주세요' : textArray[rate - 1]} </span>
                             </div>
                             <div className={Styles.write_review}>
-                                <textarea placeholder="작성한 평가는 해당 장소에 공개되며, 다른 사용자가 볼 수 있습니다.&#13;&#10;또한, 수정하실 수 없습니다.&#13;&#10;글자수는 100자를 넘을 수 없습니다."
+                                <textarea placeholder="작성한 평가는 해당 장소에 공개되며, 다른 사용자가 볼 수 있습니다.&#13;&#10;또한, 수정하실 수 없습니다.&#13;&#10;글자수는 150자를 넘을 수 없습니다."
                                     id="text1"
                                     className={Styles.contents}
                                     maxlength="150"

@@ -2,7 +2,7 @@ import { Collapse, List, ListItem, ListItemText, SvgIcon } from '@material-ui/co
 import { ExpandLess, ExpandMore } from '@material-ui/icons'
 import React,{useState} from 'react'
 import {Link} from 'react-router-dom'
-import styles from './Sidebar.module.scss'
+import styles from '../styles/Sidebar.module.scss'
 
 export default ()=>{
     const [nest,setNest] = useState(false)

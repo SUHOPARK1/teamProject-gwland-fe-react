@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback, Fragment } from "react";
 import styles from "../styles/PlaceList.module.scss";
-import { useCustomState } from "webapp/cmm/state/state";
+import { useCustomState } from "webapp/cmm/state/State";
 import { useParams, useRouteMatch } from "react-router-dom";
 import { animateScroll as scroll } from "react-scroll";
 
@@ -10,10 +10,10 @@ import {
   BlogSearch,
 } from "components/pages/Blog/components";
 
-import  Header  from "webapp/cmm/widgets/Header/Header";
-import BlogCard from "../BlogCard/BlogCard";
+import Header from "webapp/cmm/widgets/Header/Header";
+import BlogCard from "webapp/pce/components/BlogCard/BlogCard";
 import axios from "axios";
-import BlogCategories from "../BlogCategories/BlogCategories";
+import BlogCategories from "webapp/pce/components/BlogCategories/BlogCategories";
 import Button from 'components/elements/Button/Button'
 
 export default ({ sidebar = "left", layout = "grid", title = "title" }) => {
@@ -23,44 +23,44 @@ export default ({ sidebar = "left", layout = "grid", title = "title" }) => {
 
   const [currentPage, setCurrentPage] = useState(1);
   const postsPerPage = useState(6)[0];
-  const [placeArray,setPlaceArray] = useState([]);
+  const [placeArray, setPlaceArray] = useState([]);
   const [pageTitle, setPageTitle] = useState(title);
 
-  
+
 
   useEffect(() => {
-    if(category){
+    if (category) {
       axios.get(`/place/cat/${category}`)
-      .then((data)=>{
-        setPlaceArray(
-          data.data.map((post, index) => {
-            return (
-              <BlogCard
-                key={index}
-                layout={layout}
-                post={post}/>
-            );
-          })
-        );
-      })
-    }else{
-    axios.get('/place/list')
-    .then(resp=>{
-      console.log(resp.data)
-      setPlaceArray(
-        resp.data.map((post, index) => {
-          return (
-            <BlogCard
-              key={index}
-              layout={layout}
-              post={post}/>
+        .then((data) => {
+          setPlaceArray(
+            data.data.map((post, index) => {
+              return (
+                <BlogCard
+                  key={index}
+                  layout={layout}
+                  post={post} />
+              );
+            })
           );
         })
-      );
-    })
-    .catch((err)=> {
-    })
-  } 
+    } else {
+      axios.get('/place/list')
+        .then(resp => {
+          console.log(resp.data)
+          setPlaceArray(
+            resp.data.map((post, index) => {
+              return (
+                <BlogCard
+                  key={index}
+                  layout={layout}
+                  post={post} />
+              );
+            })
+          );
+        })
+        .catch((err) => {
+        })
+    }
     setCurrentPage(1);
   }, [
 
@@ -68,21 +68,19 @@ export default ({ sidebar = "left", layout = "grid", title = "title" }) => {
 
   return (
     <Fragment>
-      <Header img="assets/placeholders/photo.jpg">{pageTitle}</Header>
       <section
         className={[
           styles.wrapper,
           sidebar === "left"
             ? styles.with_sidebar + " " + styles.left
             : sidebar === "right"
-            ? styles.with_sidebar + " " + styles.right
-            : null,
+              ? styles.with_sidebar + " " + styles.right
+              : null,
         ].join(" ")}
       >
         <aside className={styles.sidebar}>
           <BlogSearch />
           <BlogCategories data={state.data.categories} />
-          <BlogFeatured data={state.data.posts} />
           <Button to={'/place/add'}>{"관광지 추가"}</Button>
         </aside>
 
@@ -92,8 +90,8 @@ export default ({ sidebar = "left", layout = "grid", title = "title" }) => {
               layout === "grid"
                 ? styles.grid
                 : layout === "list"
-                ? styles.list
-                : null
+                  ? styles.list
+                  : null
             }
           >
             {placeArray.slice(

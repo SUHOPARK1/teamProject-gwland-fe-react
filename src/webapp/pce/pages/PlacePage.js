@@ -23,7 +23,7 @@ export default ({match})=>{
                 title="Blog list left sidebar"
               />
         </Route>
-        <Route path="/place/:contentid" exact component={PlaceDetail} />
+        <Route path="/place/detail/:contentid" exact component={PlaceDetail} />
         <Route path={`${match.path}/add`} exact component={PlaceAdd}/>
         <Route path={`${match.path}/addsingle`} exact component={PlaceAddSingle}/>
         <Route path={`${match.path}/addoverview`} exact component={PlaceAddOverview}/>

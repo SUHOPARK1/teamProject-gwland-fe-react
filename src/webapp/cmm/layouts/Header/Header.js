@@ -4,7 +4,7 @@ import styles from "./Header.module.scss";
 import Layout from "../Layout/Layout";
 import { Link, Logo } from "components/elements";
 import THEME from "state/theme";
-import { useCustomState } from "webapp/cmm/state/state";
+import { useCustomState } from "webapp/cmm/state/State";
 import Icon from "@material-ui/icons/DirectionsBus"
 
 export default ({ data = [] }) => {

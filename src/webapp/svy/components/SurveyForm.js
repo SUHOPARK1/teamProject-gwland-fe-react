@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import Axios from 'axios'
 import { Button } from '@material-ui/core'
-import styles from './SurveyForm.module.scss'
+import styles from '../styles/SurveyForm.module.scss'
 
 export default () => {
 	const [step, setStep] = useState(1)
@@ -33,12 +33,12 @@ export default () => {
 	const handleLocation = (e) => { setLocation(e.target.value) }
 	const submitSvy = (e) => {
 		e.preventDefault()
-		Axios.post('http://localhost:8080/survey/save', {
+		Axios.post('/survey/save', {
 			gender, age, season, partner, duration, location,
 			theme1: theme[0],
 			theme2: theme[1],
 			theme3: theme[2]
-		}).then((res) => { alert(res) })
+		}).then((respon) => { alert(respon) })
 			.catch((err) => { alert(err) })
 	}
 
@@ -128,8 +128,8 @@ export default () => {
 
 									<div className={styles.button_box}>
 										<Button style={{
-											backgroundColor: "#F7EDAD"
-										}} variant='contained' onClick={handleNext}>다음</Button>
+											backgroundColor: "#F7EDAD",
+										}}  size='large' variant='contained' onClick={handleNext}>다음</Button>
 									</div>
 								</div>
 
@@ -200,13 +200,11 @@ export default () => {
 
 									<div className={styles.button_box}>
 										<Button style={{
-											backgroundColor: "#FAE0D4"
-										}}
-											variant='contained' onClick={handlePrev}>이전</Button>
+											backgroundColor: "#FAE0D4" }}
+											size='large' variant='contained' onClick={handlePrev}>이전</Button>
 										<Button Button style={{
-											backgroundColor: "#F7EDAD"
-										}}
-											variant='contained' onClick={handleNext}>다음</Button>
+											backgroundColor: "#F7EDAD" }}
+											size='large' variant='contained' onClick={handleNext}>다음</Button>
 									</div>
 								</div>
 
@@ -285,13 +283,11 @@ export default () => {
 
 									<div className={styles.button_box}>
 										<Button style={{
-											backgroundColor: "#FAE0D4"
-										}}
-											variant='contained' onClick={handlePrev}>이전</Button>
+											backgroundColor: "#FAE0D4" }}
+											size='large' variant='contained' onClick={handlePrev}>이전</Button>
 										<Button style={{
-											backgroundColor: "#F7EDAD"
-										}}
-											variant='contained' onClick={handleNext}>다음</Button>
+											backgroundColor: "#F7EDAD" }} 
+											size='large' variant='contained' onClick={handleNext}>다음</Button>
 									</div>
 								</div>
 
@@ -382,14 +378,12 @@ export default () => {
 
 									<div className={styles.button_box}>
 										<Button style={{
-											backgroundColor: "#FAE0D4"
-										}}
-											variant='contained' onClick={handlePrev}>이전</Button>
+											backgroundColor: "#FAE0D4" }}
+											size='large' variant='contained' onClick={handlePrev}>이전</Button>
 
 										<Button style={{
-											backgroundColor: "#F7EDAD"
-										}}
-											variant='contained' onClick={submitSvy}>결과 확인</Button>
+											backgroundColor: "#F7EDAD" }}
+											size='large' variant='contained' onClick={submitSvy}>결과 확인하기</Button>
 									</div>
 								</div>
 							</section>

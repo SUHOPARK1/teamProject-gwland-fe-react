@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import styles from "./BlogCategories.module.scss";
-import useHover from "../../../utilities/useHover";
+import useHover from "utilities/useHover";
 import THEME from "state/theme";
 
 export default ({ data = [] }) => {

@@ -14,12 +14,10 @@ import Course from './webapp/crs/pages/Course'
 import ManagePage from 'webapp/mng/pages/ManagePage'
 import Sidebar from './webapp/cmm/layouts/Sidebar/Sidebar'
 import Header from './webapp/cmm/layouts/Header/Header'
-import {useCustomState} from './webapp/cmm/state/state'
+import {useCustomState} from './webapp/cmm/state/State'
 import AuthRoute from "webapp/usr/components/AuthRoute";
 import LoginForm from "webapp/usr/pages/LoginForm";
 import PlacePage from "webapp/pce/pages/PlacePage";
-import ReviewInput from "webapp/rev/pages/ReviewInput"
-import ReviewList from "webapp/rev/pages/ReviewList";
 
 export default () => {
   const state = useCustomState()[0]
@@ -34,13 +32,6 @@ export default () => {
       <Route path="/place" component={PlacePage}/>
       <Route path="/login" exact component={LoginForm}/>
       <Route path="/manage" component={ManagePage} />
-
-
-      <Route path="/test" component={ReviewInput}/>
-      <Route path="/test2" component={ReviewList}/>
-      
-
-
       <Route path="/blog/:post_id" exact component={PostSingle} />
       <Route
         path="/services/:service_id"

@@ -12,10 +12,7 @@ export default ({ pageCount, pageNum, setPage, blockSize }) => {
         arr.push(
             <li className={i === pageNum ? styles.active : "false"} key={i}>
                 <Button className={styles.page} onClick={() => { setPage(i) }}>{i}</Button>
-            </li>
-        )
-    }
-
+            </li> )}
     return <>
         <div className={styles.paging}>
             {currentBlock !== 1 && <Button
@@ -36,5 +33,4 @@ export default ({ pageCount, pageNum, setPage, blockSize }) => {
                 }}
             >다음</Button>}
         </div>
-    </>
-}
+           </>}

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styles from "./Sidebar.module.scss";
-import { useCustomState } from "webapp/cmm/state/state";
+import { useCustomState } from "webapp/cmm/state/State";
 import { Button, Link, Logo } from "components/elements";
 import { Backdrop } from "components/ui";
 import THEME from "state/theme";

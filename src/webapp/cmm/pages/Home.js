@@ -3,7 +3,7 @@ import {
   Slider,
 } from "components/widgets";
 
-import { useCustomState } from "webapp/cmm/state/state";
+import { useCustomState } from "webapp/cmm/state/State";
 
 export default () => {
   const state = useCustomState()[0];

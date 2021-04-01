@@ -1,20 +1,20 @@
 import React, { useEffect, useState } from 'react'
-import Styles from '../sytles/reviewList.module.scss'
+import Styles from '../sytles/ReviewList.module.scss'
 import StarIcon from '@material-ui/icons/Star'
 import axios from 'axios'
 
-export default () => {
+export default ({contentid}) => {
     const [reviewList, setReviewList] = useState([])
-    const listURL = '/review/all'
+    const listURL = `/review/list/`
     const deleteURL = '/review/delete'
 
     useEffect(() => {
-        axios.get(listURL,)
+        axios.get(listURL+`${contentid}`,)
             .then((response) => {
                 console.log(response.data)
                 setReviewList(response.data)
             })
-            .catch(err => { alert(err) })
+            .catch(err => {  })
     }, [])
 
     const deleteReview = ((reviewer) => {
