@@ -18,6 +18,8 @@ import {useCustomState} from './webapp/cmm/state/State'
 import AuthRoute from "webapp/usr/components/AuthRoute";
 import LoginForm from "webapp/usr/pages/LoginForm";
 import PlacePage from "webapp/pce/pages/PlacePage";
+import UserProfile from "webapp/usr/pages/UserProfile";
+import OAuth2RedirectHandler from "webapp/usr/components/OAuth2RedirectHandler";
 
 export default () => {
   const state = useCustomState()[0]
@@ -32,6 +34,10 @@ export default () => {
       <Route path="/place" component={PlacePage}/>
       <Route path="/login" exact component={LoginForm}/>
       <Route path="/manage" component={ManagePage} />
+
+      <Route path="/oauth2/redirect" component={OAuth2RedirectHandler}/>
+      <Route path="/userprofile" component={UserProfile}/>
+
       <Route path="/blog/:post_id" exact component={PostSingle} />
       <Route
         path="/services/:service_id"

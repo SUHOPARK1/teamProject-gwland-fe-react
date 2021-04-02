@@ -5,16 +5,16 @@ import styles from '../styles/Loginform.module.scss'
 export default ()=>{
     const oauthNaver = e => {
         e.preventDefault()
-        window.location.href = "http://localhost:8080/oauth2/authorization/naver"
+        window.location.href = "http://localhost:8080/oauth2/authorization/naver?redirect_uri=http://localhost:3000/oauth2/redirect"
         }
     const oauthKakao = e => {
         e.preventDefault()
-        window.location.href = "http://localhost:8080/oauth2/authorization/kakao"
+        window.location.href = "http://localhost:8080/oauth2/authorization/kakao?redirect_uri=http://localhost:3000/oauth2/redirect"
         }
     
     const oauthGoogle = e => {
         e.preventDefault()
-        window.location.href = "http://localhost:8080/oauth2/authorization/google"
+        window.location.href = "http://localhost:8080/oauth2/authorization/google?redirect_uri=http://localhost:3000/oauth2/redirect"
         }
     
     return <>
@@ -27,8 +27,7 @@ export default ()=>{
                 <div className={styles.login_box}>
                     <ul class="loginMenu">
                         <li className={styles.join, styles.LoginFont}>
-                        번거로운 회원가입 대신 <br/> <br/>
-                        네이버, 카카오, 구글계정 연동으로 <br/> <br/> 간편하게 가입 하세요! <br/> <br/>
+                        네이버, 카카오, 구글계정 연동으로 <br/> <br/> 간편하게 로그인 하세요! <br/> <br/>
                         </li>
                     </ul>
                 </div>
