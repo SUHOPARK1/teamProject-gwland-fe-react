@@ -47,40 +47,9 @@ export default () => {
 			<div>
 				<section class="search_wrap">
 					<div className={styles.contentInner}>
-						<h2 class="page_title page_tit1">AI 여행 추천</h2>
-						<p class="page_subTitle">
-							여행 키워드를 선택하면, AI가 여행코스를 추천해드립니다.
-					</p>
 						<form class="search_form">
 							<section class="selelct_wrap">
-								<div class="selelct_title">AI가 여행지를 분석 중입니다.</div>
-								<ul class="step_map">
-									<li class="active">
-										<div class="step_box">
-											<span class="step_text">1STEP</span>
-											<i class="step_icon_default step_icon"></i>
-										</div>
-									</li>
-									<li class="">
-										<div class="step_box">
-											<span class="step_text">2STEP</span>
-											<i class="step_icon_default"></i>
-										</div>
-									</li>
-									<li class="">
-										<div class="step_box">
-											<span class="step_text">3STEP</span>
-											<i class="step_icon_default"></i>
-										</div>
-									</li>
-									<li class="">
-										<div class="step_box">
-											<span class="step_text">4STEP</span>
-											<i class="step_icon_default"></i>
-										</div>
-									</li>
-								</ul>
-
+								<br /><br /><br /><br /><br />
 								<div className={step === 1 ? styles.selected_step : styles.step}>
 									<dl class="select_box">
 										<dt class="select-question"><em class="Q-text">Q</em> 당신의 성별은 무엇인가요?</dt>
@@ -128,8 +97,8 @@ export default () => {
 
 									<div className={styles.button_box}>
 										<Button style={{
-											backgroundColor: "#F7EDAD",
-										}}  size='large' variant='contained' onClick={handleNext}>다음</Button>
+											backgroundColor: "#fbe6c2",
+										}} size='large' variant='contained' onClick={handleNext}>다음</Button>
 									</div>
 								</div>
 
@@ -200,10 +169,12 @@ export default () => {
 
 									<div className={styles.button_box}>
 										<Button style={{
-											backgroundColor: "#FAE0D4" }}
+											backgroundColor: "#FAE0D4"
+										}}
 											size='large' variant='contained' onClick={handlePrev}>이전</Button>
 										<Button Button style={{
-											backgroundColor: "#F7EDAD" }}
+											backgroundColor: "#F7EDAD"
+										}}
 											size='large' variant='contained' onClick={handleNext}>다음</Button>
 									</div>
 								</div>
@@ -283,10 +254,12 @@ export default () => {
 
 									<div className={styles.button_box}>
 										<Button style={{
-											backgroundColor: "#FAE0D4" }}
+											backgroundColor: "#FAE0D4"
+										}}
 											size='large' variant='contained' onClick={handlePrev}>이전</Button>
 										<Button style={{
-											backgroundColor: "#F7EDAD" }} 
+											backgroundColor: "#fbe6c2"
+										}}
 											size='large' variant='contained' onClick={handleNext}>다음</Button>
 									</div>
 								</div>
@@ -378,11 +351,13 @@ export default () => {
 
 									<div className={styles.button_box}>
 										<Button style={{
-											backgroundColor: "#FAE0D4" }}
+											backgroundColor: "#FAE0D4"
+										}}
 											size='large' variant='contained' onClick={handlePrev}>이전</Button>
 
 										<Button style={{
-											backgroundColor: "#F7EDAD" }}
+											backgroundColor: "#fbe6c2"
+										}}
 											size='large' variant='contained' onClick={submitSvy}>결과 확인하기</Button>
 									</div>
 								</div>

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, Fragment } from "react";
+import React, { useState, useEffect} from "react";
 import { Button } from '@material-ui/core'
 import styles from "./Header.module.scss";
 import Layout from "../Layout/Layout";
@@ -64,10 +64,10 @@ export default ({ data = [] }) => {
           <Link url="/login">
             <Button style={{
               borderRadius: 20,
-              backgroundColor: "#FFEA00",
+              backgroundColor: "#f7f3e9",
               padding: "8px 16px",
               fontSize: "14px"
-            }} variant="contained" size="large" startIcon={<Icon />}>간편 가입</Button>
+            }} variant="contained" size="large" startIcon={<Icon />}>간편 로그인</Button>
           </Link>
         </div>
 
@@ -86,8 +86,8 @@ export default ({ data = [] }) => {
   );
 
   return (
-    <Fragment>
+    <>
       <div className={styles.wrapper}>{header}</div>
-    </Fragment>
+    </>
   );
 };

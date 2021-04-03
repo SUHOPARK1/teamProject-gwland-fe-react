@@ -31,7 +31,7 @@ export default ()=>{
         .then(res=>{setSurveyList(res.data.content)})
     },[currentPage])
 
-    const title = <h3>설문 리스트</h3>
+    const title = <center><h2>설문 조사 데이터</h2></center>
     const content = <Table>
         <TableHead>
             <TableRow>
