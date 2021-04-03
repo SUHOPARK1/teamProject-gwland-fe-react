@@ -1,4 +1,4 @@
-import React, { useEffect, Fragment } from "react";
+import React, { useEffect } from "react";
 import { Switch, Route } from "react-router-dom";
 
 import {
@@ -24,7 +24,7 @@ import OAuth2RedirectHandler from "webapp/usr/components/OAuth2RedirectHandler";
 export default () => {
   const state = useCustomState()[0]
   
-  return <Fragment>
+  return <>
     <Sidebar data={state.data.menu}/>
     <Header data={state.data.menu}/>
     <Switch>
@@ -67,5 +67,5 @@ export default () => {
         <Blog sidebar="left" layout="grid" />
       </Route>
     </Switch>
-  </Fragment>;
+  </>;
 };

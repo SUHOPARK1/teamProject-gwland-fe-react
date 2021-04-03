@@ -1,3 +1,4 @@
 export default {
-  color: "#7a7e91b6"
+  color: "#85bcf7"
+  // color: "#366fa39f"
 };
