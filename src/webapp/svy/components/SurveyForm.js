@@ -97,7 +97,7 @@ export default () => {
 
 									<div className={styles.button_box}>
 										<Button style={{
-											backgroundColor: "#fbe6c2",
+											backgroundColor: "#afa5a5da",
 										}} size='large' variant='contained' onClick={handleNext}>다음</Button>
 									</div>
 								</div>
@@ -169,11 +169,11 @@ export default () => {
 
 									<div className={styles.button_box}>
 										<Button style={{
-											backgroundColor: "#FAE0D4"
+											backgroundColor: "#e2dccd"
 										}}
 											size='large' variant='contained' onClick={handlePrev}>이전</Button>
 										<Button Button style={{
-											backgroundColor: "#F7EDAD"
+											backgroundColor: "#afa5a5da"
 										}}
 											size='large' variant='contained' onClick={handleNext}>다음</Button>
 									</div>
@@ -254,11 +254,11 @@ export default () => {
 
 									<div className={styles.button_box}>
 										<Button style={{
-											backgroundColor: "#FAE0D4"
+											backgroundColor: "#e2dccd"
 										}}
 											size='large' variant='contained' onClick={handlePrev}>이전</Button>
 										<Button style={{
-											backgroundColor: "#fbe6c2"
+											backgroundColor: "#afa5a5da"
 										}}
 											size='large' variant='contained' onClick={handleNext}>다음</Button>
 									</div>
@@ -351,12 +351,12 @@ export default () => {
 
 									<div className={styles.button_box}>
 										<Button style={{
-											backgroundColor: "#FAE0D4"
+											backgroundColor: "#e2dccd"
 										}}
 											size='large' variant='contained' onClick={handlePrev}>이전</Button>
 
 										<Button style={{
-											backgroundColor: "#fbe6c2"
+											backgroundColor: "#afa5a5da"
 										}}
 											size='large' variant='contained' onClick={submitSvy}>결과 확인하기</Button>
 									</div>

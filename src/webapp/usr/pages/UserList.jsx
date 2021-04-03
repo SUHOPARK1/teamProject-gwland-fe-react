@@ -15,6 +15,7 @@ export default () => {
   const blockSize = 10
   const countURL = '/user/count'
   const deleteURL = '/user/delete'
+  
 
   useEffect(() => {
     axios.get(countURL)
@@ -41,11 +42,10 @@ export default () => {
       window.location.reload(deleteURL)
     }
   })
-  const title = <center><h2>고객 정보 데이터</h2><h3>※ 구글은 성별과 연령대를 저장할 수 없습니다. (구글 정책사항)</h3> </center>
+  const title = <center><h2> 고객 정보 데이터</h2><h3>※ 구글은 성별과 연령대를 저장할 수 없습니다. (구글 정책사항)</h3> </center>
   const content =
-
     <Table>
-      <TableHead>
+      <TableHead >
         <TableRow>
           {usr.map((user) => {
             return <TableCell>{user}</TableCell>
