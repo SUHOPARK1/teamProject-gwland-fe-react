@@ -8,11 +8,13 @@ export default ({ contentid }) => {
     const listURL = `/review/list/`
     const deleteURL = '/review/delete'
     const starAvg = (reviewList) => {
+        if(reviewList.length==0)
+        return false;
         let starSum = 0
         reviewList.map((reviewer) => {
             starSum += Number(reviewer.revStar)
         })
-        return starSum / reviewList.length
+        return (starSum / reviewList.length).toFixed(2)
     }
 
     useEffect(() => {
@@ -50,8 +52,8 @@ export default ({ contentid }) => {
                     <div className={Styles.grade_star}>
                         <em className={Styles.avg_rate}>
                             평점
-                        <StarIcon style={{ color: '#3396ff', fontSize: "35px" }} />
-                            {starAvg(reviewList).toFixed(2) || ''}
+                        <StarIcon style={{ color: '#3396ff', fontSize: '35px' }} />
+                            {starAvg(reviewList) || ' 리뷰가 없습니다.'}
                             <span className={Styles.txt_score}></span>
                         </em>
                     </div>
@@ -98,5 +100,6 @@ export default ({ contentid }) => {
                 </ul>
             </div>
         </div>
+        <div style={{fontSize:'120px'}}><br/></div>
     </>
 }

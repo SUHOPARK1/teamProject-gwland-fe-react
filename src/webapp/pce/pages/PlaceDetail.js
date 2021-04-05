@@ -16,46 +16,37 @@ export default () => {
   const [place, setPlace] = useState({});
   const [category, setCategory] = useState("")
 
-  
-  useEffect(()=> {
+
+  useEffect(() => {
     axios.get(`/place/dtl/${contentid}`)
-    .then((resp)=>{
-      console.log(resp.data)
-      setPlace(resp.data[0])})
-    .catch((err)=>{
-      alert(err)
-    })
-    
-  },[])
+      .then((resp) => {
+        console.log(resp.data)
+        setPlace(resp.data[0])
+      })
+      .catch((err) => {
+        alert(err)
+      })
+
+  }, [])
 
   return (
-    <Fragment>
+    <>
       <Header img={place.firstimage}>{place.title}</Header>
 
-      <Layout col="1">
-        <div className={styles.breadcrumbs} style={{ color: THEME.color }}>
-          <Link to="/blog-grid-left-sidebar">Blog</Link>
-          <i className="las la-long-arrow-alt-right" />
-          <Link to={"/blog/cats/" + place.contenttypeid}>{category}</Link>
-          <i className="las la-long-arrow-alt-right" />
-          <span>{place.title}</span>
-        </div>
-      </Layout>
+     
 
       <Layout col="2" padding>
         <div>
           <figure
             className={styles.image}
-            style={{ background: "url(" + place.firstimage + ") center/cover" }}
-          /></div>
-        <div>콘텐츠 설명</div>
-        
+            style={{ background: "url(" + place.firstimage + ") center/cover" }} />
+        </div>
+        <div className={styles.overview}>{place.overview}</div>
+
       </Layout>
       <ReviewInput contentid={contentid}></ReviewInput>
       <ReviewList contentid={contentid}></ReviewList>
-
-      
- 
-    </Fragment>
+    </>
   );
 };
+

@@ -1,35 +1,40 @@
-import React, { Component } from 'react';
-import { Redirect } from 'react-router-dom'
+import axios from 'axios';
+import React from 'react'
+import { useDispatch } from 'react-redux';
+import { Redirect } from 'react-router'
+import { login } from 'webapp/_actions';
 
-class OAuth2RedirectHandler extends Component {
-    getUrlParameter(name) {
-        name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
-        var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+const getUrlParameter= (name,search) => {
+    name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+    var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
 
-        var results = regex.exec(this.props.location.search);
-        return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
-    };
-
-    render() {        
-        const token = this.getUrlParameter('token');
-        const error = this.getUrlParameter('error');
-
-        if(token) {
-            localStorage.setItem('accessToken', token);
-            return <Redirect to={{
-                pathname: "/userprofile",
-                state: { from: this.props.location }
-            }}/>; 
-        } else {
-            return <Redirect to={{
-                pathname: "/login",
-                state: { 
-                    from: this.props.location,
-                    error: error 
-                }
-            }}/>; 
-        }
-    }
+    var results = regex.exec(search);
+    return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
 }
 
-export default OAuth2RedirectHandler;
+export default ({location})=>{
+    const token = getUrlParameter('token',location.search);
+    const error = getUrlParameter('error',location.search);
+    const dispatch = useDispatch()
+
+    if(token){
+        localStorage.setItem('accessToken', token)
+        axios.get('/user/one',{
+            headers:{
+                Authorization:'Bearer '+ localStorage.getItem('accessToken')
+            }
+        }).then(resp=>dispatch(login(resp.data)))
+        return <Redirect to={{
+            pathname: "/",
+            state: { from: location }
+        }}/>
+    }else{
+        return <Redirect to={{
+            pathname: "/login",
+            state: { 
+                from: location,
+                error: error 
+            }
+        }}/>
+    }
+}

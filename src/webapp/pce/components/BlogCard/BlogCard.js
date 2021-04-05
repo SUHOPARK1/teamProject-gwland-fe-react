@@ -9,7 +9,7 @@ export default ({ post, layout = "grid" }) => {
     <CardImage image={post.firstimage} layout={layout}>
       <div className={styles.card}>
         <h3>
-          <Link to={"/blog/" + post.contentid}>{post.title}</Link>
+          <Link to={"/place/detail/" + post.contentid}>{post.title}</Link>
         </h3>
         <h6>
           <Link to={"/blog/" + post.contentid}>{post.addr1}</Link><br/>
@@ -20,8 +20,9 @@ export default ({ post, layout = "grid" }) => {
         <p>{post.short}</p>
 
         <div className={styles.btn}>
-          <Button to={"/place/detail/" + post.contentid} hoverType="solid-gray-tb">
-            Read More
+          <Button 
+          to={"/place/detail/" + post.contentid} hoverType="solid-gray-tb">
+            더보기
           </Button>
         </div>
       </div>

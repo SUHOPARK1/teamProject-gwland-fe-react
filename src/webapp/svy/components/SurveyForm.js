@@ -97,8 +97,11 @@ export default () => {
 
 									<div className={styles.button_box}>
 										<Button style={{
-											backgroundColor: "#afa5a5da",
-										}} size='large' variant='contained' onClick={handleNext}>다음</Button>
+											backgroundColor: "#B2CCFF",
+											padding: '10px 45px',
+											fontSize: '13px'
+										}}
+											variant='contained' onClick={handleNext}>다음</Button>
 									</div>
 								</div>
 
@@ -169,13 +172,18 @@ export default () => {
 
 									<div className={styles.button_box}>
 										<Button style={{
-											backgroundColor: "#e2dccd"
+											backgroundColor: "#D9E5FF",
+											marginRight: '30px',
+											padding: '10px 45px',
+											fontSize: '13px'
 										}}
-											size='large' variant='contained' onClick={handlePrev}>이전</Button>
+											variant='contained' onClick={handlePrev}>이전</Button>
 										<Button Button style={{
-											backgroundColor: "#afa5a5da"
+											backgroundColor: "#B2CCFF",
+											padding: '10px 45px',
+											fontSize: '13px'
 										}}
-											size='large' variant='contained' onClick={handleNext}>다음</Button>
+											variant='contained' onClick={handleNext}>다음</Button>
 									</div>
 								</div>
 
@@ -254,11 +262,16 @@ export default () => {
 
 									<div className={styles.button_box}>
 										<Button style={{
-											backgroundColor: "#e2dccd"
+											backgroundColor: "#D9E5FF",
+											marginRight: '30px',
+											padding: '10px 45px',
+											fontSize: '13px'
 										}}
 											size='large' variant='contained' onClick={handlePrev}>이전</Button>
 										<Button style={{
-											backgroundColor: "#afa5a5da"
+											backgroundColor: "#B2CCFF",
+											padding: '10px 45px',
+											fontSize:'13px'
 										}}
 											size='large' variant='contained' onClick={handleNext}>다음</Button>
 									</div>
@@ -351,14 +364,18 @@ export default () => {
 
 									<div className={styles.button_box}>
 										<Button style={{
-											backgroundColor: "#e2dccd"
+											backgroundColor: "#D9E5FF",
+											marginRight: '30px',
+											padding: '10px 45px',
+											fontSize: '13px'
 										}}
 											size='large' variant='contained' onClick={handlePrev}>이전</Button>
-
 										<Button style={{
-											backgroundColor: "#afa5a5da"
+											backgroundColor: "#FFA7A7",
+											padding: '10px 45px',
+											fontSize:'13px'
 										}}
-											size='large' variant='contained' onClick={submitSvy}>결과 확인하기</Button>
+											variant='contained' onClick={submitSvy}>결과 확인하기</Button>
 									</div>
 								</div>
 							</section>

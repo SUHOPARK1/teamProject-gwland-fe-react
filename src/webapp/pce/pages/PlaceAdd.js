@@ -6,9 +6,8 @@ export default () => {
   const state = useCustomState()[0];
 
   return (
-    <Fragment>
-      
+    <>
       <Contacts2 />
-    </Fragment>
+    </>
   );
 };
