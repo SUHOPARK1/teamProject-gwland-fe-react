@@ -52,6 +52,17 @@
         margin: 0;
         padding: 0;
     }
+    & .avg_rate{
+        color: #000;
+        font-style: normal;
+        font-weight: 400;
+        float: left;
+        height: 40px;
+        font-family: Arial,sans-serif;
+        font-size: 40px;
+        line-height: 40px;
+        letter-spacing: 0;
+    }
     & .num_rate{
         color: #000;
         font-style: normal;

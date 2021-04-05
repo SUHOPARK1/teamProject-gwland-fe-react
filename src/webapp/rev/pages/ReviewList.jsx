@@ -3,18 +3,25 @@ import Styles from '../sytles/ReviewList.module.scss'
 import StarIcon from '@material-ui/icons/Star'
 import axios from 'axios'
 
-export default ({contentid}) => {
+export default ({ contentid }) => {
     const [reviewList, setReviewList] = useState([])
     const listURL = `/review/list/`
     const deleteURL = '/review/delete'
+    const starAvg = (reviewList) => {
+        let starSum = 0
+        reviewList.map((reviewer) => {
+            starSum += Number(reviewer.revStar)
+        })
+        return starSum / reviewList.length
+    }
 
     useEffect(() => {
-        axios.get(listURL+`${contentid}`,)
+        axios.get(listURL + `${contentid}`,)
             .then((response) => {
                 console.log(response.data)
                 setReviewList(response.data)
             })
-            .catch(err => {  })
+            .catch(err => { })
     }, [])
 
     const deleteReview = ((reviewer) => {
@@ -41,24 +48,24 @@ export default ({contentid}) => {
                 <div className={Styles.ahead_info}>
                     <strong className={Styles.screen_out}>평가 요약</strong>
                     <div className={Styles.grade_star}>
-                        <em className={Styles.num_rate}>평점 3.3
-                          <span className={Styles.txt_score}></span>
+                        <em className={Styles.avg_rate}>
+                            평점
+                        <StarIcon style={{ color: '#3396ff', fontSize: "35px" }} />
+                            {starAvg(reviewList).toFixed(2) || ''}
+                            <span className={Styles.txt_score}></span>
                         </em>
-
                     </div>
                 </div>
                 <div className={Styles.evaluation_review}>
                     <strong className={Styles.screen_out}></strong>
                 </div>
                 <ul className={Styles.reivew_form}>
-
                     {reviewList.map((reviewer) => {
-
                         return (
                             <li className={Styles.liStyle}>
                                 <div className={Styles.star_info}>
                                     <em className={Styles.num_rate}>
-                                        <StarIcon fontSize='small' />
+                                        <StarIcon style={{ color: '#3396ff', fontSize: "15px" }} />
                                         &nbsp;{reviewer.revStar}/5
                                         <span className={Styles.screen_out}>점</span>
                                     </em>
@@ -85,7 +92,8 @@ export default ({contentid}) => {
                                     </div>
                                 </div>
                             </li>
-                        )})
+                        )
+                    })
                     }
                 </ul>
             </div>
