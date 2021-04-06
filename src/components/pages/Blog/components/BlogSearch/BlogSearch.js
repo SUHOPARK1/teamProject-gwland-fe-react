@@ -9,7 +9,8 @@ export default withRouter(({ history }) => {
     e.preventDefault();
     if (searchValue === "") return;
     setSearchValue("");
-    history.push("/blog/search/" + searchValue);
+    history.push("/place");
+    // history.push("/blog/search/" + searchValue); //검색기능 
   };
   return (
     <form onSubmit={handleSubmit} className={styles.search}>

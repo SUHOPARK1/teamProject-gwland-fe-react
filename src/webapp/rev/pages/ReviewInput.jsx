@@ -3,6 +3,7 @@ import Styles from '../sytles/ReviewInput.module.scss'
 import ReactStars from "react-rating-stars-component";
 import Axios from 'axios'
 import moment from 'moment';
+import { useDispatch, useSelector } from "react-redux";
 
 export default ({contentid}) => {
     const [rate, setRate] = useState(0)
@@ -10,7 +11,7 @@ export default ({contentid}) => {
     const [textlength, setLength] = useState(0)
     const nowtime = moment().format('YYYY.MM.DD.')
     const inputUrl = '/review/save/'
-
+    const currentName = useSelector(state => state.accountReducer.currentName)
     const textArray = ['진짜 별로에요...', '별로에요...', '그냥 그래요.', '좋아요!', '너무 좋아요!!']
     const ratingChanged = (newRating) => {
         setRate(newRating);
@@ -23,7 +24,7 @@ export default ({contentid}) => {
             contentid: contentid,
             revContent: textsection,
             revDate: nowtime,
-            revName: ``,
+            revName: `${currentName}`,
             revStar: `${rate}`,
         }).then((respone) => { 
             alert('성공적으로 등록 하셨습니다.')

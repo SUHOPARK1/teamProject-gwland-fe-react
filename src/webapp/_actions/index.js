@@ -2,7 +2,8 @@ export const login = (user) => ({
     type: "LOGIN",
     data:{
         currentUser:user,
-        authorization:"user"
+        currentName: user.username,
+        authorization:user.role
     }
 })
 

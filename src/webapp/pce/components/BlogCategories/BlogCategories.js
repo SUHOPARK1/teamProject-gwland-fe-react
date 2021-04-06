@@ -22,7 +22,9 @@ const ListItem = ({ item }) => {
       key={item.id}
       style={{ background: isHover && "rgb(245,245,245)" }}
     >
-      <Link to={"/place/cats/" + item.id}>
+      <Link to ={"/place"}>
+            {/* to={"/place/cats/" + item.id}> */} 
+                                          {/* 카테고리 기능 */}
         <i
           className="las la-long-arrow-alt-right"
           style={{ color: THEME.color }}

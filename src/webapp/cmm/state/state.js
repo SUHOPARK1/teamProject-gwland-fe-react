@@ -24,39 +24,38 @@ let state = {
         name: "관광지",
         url: "/place",
       },
-      {
-        name: "관리자",
-        url: "/manage",
-      },
+      
+      { name: "관리자",
+        url: "/manage",},
     
     ],
     categories: [
       {
-        id: "12",
+        id: "1",
         title: "관광지",
       },
       {
-        id: "14",
+        id: "2",
         title: "문화시설",
       },
       {
-        id: "15",
+        id: "3",
         title: "축제/공연/행사",
       },
       {
-        id: "25",
+        id: "4",
         title: "여행코스",
       },
       {
-        id: "28",
+        id: "5",
         title: "레포츠",
       },
       {
-        id: "32",
+        id: "6",
         title: "쇼핑",
       },
       {
-        id: "39",
+        id: "7",
         title: "음식",
       },
     ],
@@ -77,7 +76,6 @@ const actions = {
   fetch: async () => {
     try {
       const response = await axios.get(
-        // Change with your database path
         "/api/data"
       );
       state = { ...state, data: response.data };

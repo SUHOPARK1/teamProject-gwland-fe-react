@@ -5,16 +5,17 @@ import Layout from "../Layout/Layout";
 import { Link, Logo } from "components/elements";
 import THEME from "state/theme";
 import { useCustomState } from "webapp/cmm/state/State";
-import Icon from "@material-ui/icons/DirectionsBus"
+import LoginIcon from "@material-ui/icons/DirectionsBus"
+import LogoutIcon from "@material-ui/icons/PowerSettingsNew"
+
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "webapp/_actions";
 
 export default ({ data = [] }) => {
   const [sticky, setSticky] = useState(false);
   const actions = useCustomState()[1];
-  const currentUser = useSelector(state=>state.accountReducer.currentUser)
+  const currentUser = useSelector(state => state.accountReducer.currentUser)
   const dispatch = useDispatch()
-
   const handleResize = () => {
     setSticky(window.pageYOffset > 200 ? true : false);
   };
@@ -24,12 +25,6 @@ export default ({ data = [] }) => {
     dispatch(logout())
   }
 
-  useEffect(() => {
-    window.addEventListener("scroll", handleResize);
-    return () => {
-      window.removeEventListener("scroll", handleResize);
-    };
-  }, []);
 
   const menu = data.map((item, index) => {
     if (!item.children) {
@@ -77,14 +72,14 @@ export default ({ data = [] }) => {
               backgroundColor: "#f7f3e9",
               padding: "8px 16px",
               fontSize: "14px"
-            }} variant="contained" size="large" startIcon={<Icon />}>간편 로그인</Button>
+            }} variant="contained" size="large" startIcon={<LoginIcon />}>간편 로그인</Button>
           </Link> :
           <Button style={{
             borderRadius: 20,
-            backgroundColor: "#f7f3e9",
+            backgroundColor: "#FFD8D8",
             padding: "8px 16px",
             fontSize: "14px"
-          }} onClick = {handleLogout} variant="contained" size="large" startIcon={<Icon />}>로그아웃</Button>}
+          }} onClick = {handleLogout} variant="contained" size="large" startIcon={<LogoutIcon />}>로그아웃</Button>}
         </div>
 
         <div
