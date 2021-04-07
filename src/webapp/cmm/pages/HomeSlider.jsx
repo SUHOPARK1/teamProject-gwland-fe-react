@@ -1,5 +1,5 @@
-import React, { Fragment } from "react"
-import { SvgIcon, Button } from '@material-ui/core'
+import React from "react"
+import { SvgIcon } from '@material-ui/core'
 import Slider from "react-slick"
 import { Link } from "components/elements"
 import Styles from './HomeStyles.scss'

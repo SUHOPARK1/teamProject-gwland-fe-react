@@ -3,7 +3,9 @@ export const login = (user) => ({
     data:{
         currentUser:user,
         currentName: user.username,
-        authorization:user.role
+        currentNum: user.num,
+        currentProviderid: user.providerId,
+        authorization: user.role
     }
 })
 

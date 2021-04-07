@@ -11,7 +11,6 @@ import App from "./App";
 import Mock from "./state/mock";
 import "./state/database";
 import { Provider } from "react-redux";
-import { rootReudcer } from "webapp/_reducers";
 import { configureStore } from "webapp/_store";
 import { PersistGate } from 'redux-persist/integration/react'
 

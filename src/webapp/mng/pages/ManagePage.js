@@ -9,8 +9,8 @@ export default ()=>{
     <div style={{position:"relative"}}>
         <Sidebar/>
         <Switch>
-            <Route path="/manage/userList" component={UserList}/>
-            <Route path="/manage/survey" component={SurveyList}/>
+            <Route path="/manage/userList" exact component={UserList}/>
+            <Route path="/manage/survey" exact component={SurveyList}/>
         </Switch>
     </div>
     </>

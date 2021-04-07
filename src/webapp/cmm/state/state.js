@@ -1,8 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 
-const photo = require("assets/placeholders/photo.jpg");
-
 let listeners = [];
 
 let state = {
@@ -26,36 +24,37 @@ let state = {
       },
       
       { name: "관리자",
-        url: "/manage",},
+        url: "/manage",
+        auth:"admin"},
     
     ],
     categories: [
       {
-        id: "1",
+        id: "12",
         title: "관광지",
       },
       {
-        id: "2",
+        id: "14",
         title: "문화시설",
       },
       {
-        id: "3",
+        id: "15",
         title: "축제/공연/행사",
       },
       {
-        id: "4",
+        id: "25",
         title: "여행코스",
       },
       {
-        id: "5",
+        id: "28",
         title: "레포츠",
       },
       {
-        id: "6",
+        id: "32",
         title: "쇼핑",
       },
       {
-        id: "7",
+        id: "39",
         title: "음식",
       },
     ],

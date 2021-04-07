@@ -27,7 +27,7 @@ export default () => {
 
   const deleteUser = ((user) => {
     const deleteConfirm = window.confirm('정말 유저정보를 삭제하시겠습니까?')
-    if (deleteConfirm == true) {
+    if (deleteConfirm === true) {
       axios.delete(deleteURL, {
         data: { num: user.num }
       })

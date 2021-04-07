@@ -2,13 +2,15 @@ import React, { useEffect, useState } from 'react'
 import Styles from '../sytles/ReviewList.module.scss'
 import StarIcon from '@material-ui/icons/Star'
 import axios from 'axios'
+import { useSelector } from "react-redux";
 
 export default ({ contentid }) => {
     const [reviewList, setReviewList] = useState([])
     const listURL = `/review/list/`
     const deleteURL = '/review/delete'
+    const currentNum = useSelector(state => state.accountReducer.currentNum)
     const starAvg = (reviewList) => {
-        if(reviewList.length==0)
+        if(reviewList.length===0)
         return false;
         let starSum = 0
         reviewList.map((reviewer) => {
@@ -20,7 +22,6 @@ export default ({ contentid }) => {
     useEffect(() => {
         axios.get(listURL + `${contentid}`,)
             .then((response) => {
-                console.log(response.data)
                 setReviewList(response.data)
             })
             .catch(err => { })
@@ -28,7 +29,7 @@ export default ({ contentid }) => {
 
     const deleteReview = ((reviewer) => {
         const deleteConfirm = window.confirm('정말 리뷰를 삭제하시겠습니까?')
-        if (deleteConfirm == true) {
+        if (deleteConfirm === true) {
             axios.delete(deleteURL, {
                 data: reviewer
             })
@@ -85,11 +86,16 @@ export default ({ contentid }) => {
                                         </span>
                                         <a className={Styles.bg_bar}></a>
                                         <span className={Styles.time_write}>{reviewer.revDate}</span>
-                                        <a className={Styles.bg_bar}></a>
-                                        <span className={Styles.delete} onClick={() => deleteReview(reviewer)}>
-                                            삭제
-                                        </span>
-                                        <a className={Styles.bg_bar}></a>
+
+
+                                        {reviewer.num == currentNum ? 
+                                        <span className={Styles.delete} 
+                                        onClick={() => deleteReview(reviewer)}>
+                                            <a className={Styles.bg_bar}></a>
+                                                                     삭제 </span>
+                                        :  <span></span>  }
+                                    <a className={Styles.bg_bar}></a>
+
                                         <a className={Styles.link_function}></a>
                                     </div>
                                 </div>

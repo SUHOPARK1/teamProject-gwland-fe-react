@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import Axios from 'axios'
 import { Button } from '@material-ui/core'
 import styles from '../styles/SurveyForm.module.scss'
@@ -38,7 +38,7 @@ export default () => {
 			theme1: theme[0],
 			theme2: theme[1],
 			theme3: theme[2]
-		}).then((respon) => { alert(respon) })
+		}).then((respon) => { console.log(respon) })
 			.catch((err) => { alert(err) })
 	}
 

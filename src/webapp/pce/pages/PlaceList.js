@@ -1,16 +1,14 @@
-import React, { useState, useEffect, useCallback, Fragment } from "react";
+import React, { useState, useEffect } from "react";
 import styles from "../styles/PlaceList.module.scss";
 import { useCustomState } from "webapp/cmm/state/State";
-import { useParams, useRouteMatch } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { animateScroll as scroll } from "react-scroll";
 
 import {
   BlogPagination,
-  BlogFeatured,
-  BlogSearch,
+  BlogSearch
 } from "components/pages/Blog/components";
 
-import Header from "webapp/cmm/widgets/Header/Header";
 import BlogCard from "webapp/pce/components/BlogCard/BlogCard";
 import axios from "axios";
 import BlogCategories from "webapp/pce/components/BlogCategories/BlogCategories";
@@ -18,15 +16,11 @@ import Button from 'components/elements/Button/Button'
 
 export default ({ sidebar = "left", layout = "grid", title = "title" }) => {
   const state = useCustomState()[0];
-  const { category, author, posting_date, query } = useParams();
-  const { url } = useRouteMatch();
+  const { category } = useParams();
 
   const [currentPage, setCurrentPage] = useState(1);
   const postsPerPage = useState(6)[0];
   const [placeArray, setPlaceArray] = useState([]);
-  const [pageTitle, setPageTitle] = useState(title);
-
-
 
   useEffect(() => {
     if (category) {
@@ -46,7 +40,6 @@ export default ({ sidebar = "left", layout = "grid", title = "title" }) => {
     } else {
       axios.get('/place/list')
         .then(resp => {
-          console.log(resp.data)
           setPlaceArray(
             resp.data.map((post, index) => {
               return (
@@ -67,7 +60,7 @@ export default ({ sidebar = "left", layout = "grid", title = "title" }) => {
   ]);
 
   return (
-    <Fragment>
+    <>
       <section
         className={[
           styles.wrapper,
@@ -118,6 +111,6 @@ export default ({ sidebar = "left", layout = "grid", title = "title" }) => {
           />
         </article>
       </section>
-    </Fragment>
+    </>
   );
 };

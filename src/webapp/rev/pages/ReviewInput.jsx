@@ -3,7 +3,7 @@ import Styles from '../sytles/ReviewInput.module.scss'
 import ReactStars from "react-rating-stars-component";
 import Axios from 'axios'
 import moment from 'moment';
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 
 export default ({contentid}) => {
     const [rate, setRate] = useState(0)
@@ -11,7 +11,9 @@ export default ({contentid}) => {
     const [textlength, setLength] = useState(0)
     const nowtime = moment().format('YYYY.MM.DD.')
     const inputUrl = '/review/save/'
+    const authorization = useSelector(state => state.accountReducer.authorization)
     const currentName = useSelector(state => state.accountReducer.currentName)
+    const currentNum = useSelector(state => state.accountReducer.currentNum)
     const textArray = ['진짜 별로에요...', '별로에요...', '그냥 그래요.', '좋아요!', '너무 좋아요!!']
     const ratingChanged = (newRating) => {
         setRate(newRating);
@@ -20,16 +22,31 @@ export default ({contentid}) => {
 
     const reviewSubmit = (e) => {
         e.preventDefault()
-        Axios.post(inputUrl, {
-            contentid: contentid,
-            revContent: textsection,
-            revDate: nowtime,
-            revName: `${currentName}`,
-            revStar: `${rate}`,
-        }).then((respone) => { 
-            alert('성공적으로 등록 하셨습니다.')
-            window.location.reload('/review/save')})
-            .catch((err) => { console.log(err) })}
+        if(authorization === 'public' ){
+            const confirm = window.confirm('로그인을 해주세요.')
+            if(confirm === true){
+                console.log(confirm)
+                return window.location.href='/login'
+            }
+        }else{
+            if(textsection==="" || rate===0){
+                alert('별점과 리뷰를 모두 작성해 주세요.')
+            }else{
+                Axios.post(inputUrl, {
+                    contentid: contentid,
+                    revContent: textsection,
+                    revDate: nowtime,
+                    revName: `${currentName}`,
+                    revStar: `${rate}`,
+                    num: currentNum
+                }).then((respone) => { 
+                    alert('성공적으로 등록 하셨습니다.')
+                    window.location.reload('/review/save')})
+                    .catch((err) => { console.log(err) })}
+
+            }
+
+        }
 
     return <>
         <div className={Styles.kContent}>
@@ -38,7 +55,7 @@ export default ({contentid}) => {
                     <form className={Styles.commentUpdateForm}>
                         <fieldset className={Styles.fieldsetForm}>
                             <div className={Styles.grade_star}>
-                                <span className={Styles.ico_star_inner_star} Style={{ width: "0%" }, { height: "1%" }}></span>
+                                <span className={Styles.ico_star_inner_star} Style={{ width: "0%" ,height: "1%" }}></span>
                                 <div className={Styles.starform}>
                                     <ReactStars
                                         classNames={Styles.rateStar}
@@ -48,7 +65,7 @@ export default ({contentid}) => {
                                 <em className={Styles.num_rate}>
                                     <span className={Styles.txt_g}> {rate}/5 점 </span>
                                 </em>
-                                <span className={Styles.txt_word}> {rate == 0 ? '평가해주세요' : textArray[rate - 1]} </span>
+                                <span className={Styles.txt_word}> {rate === 0 ? '평가해주세요' : textArray[rate - 1]} </span>
                             </div>
                             <div className={Styles.write_review}>
                                 <textarea placeholder="작성한 평가는 해당 장소에 공개되며, 다른 사용자가 볼 수 있습니다.&#13;&#10;또한, 수정하실 수 없습니다.&#13;&#10;글자수는 150자를 넘을 수 없습니다."

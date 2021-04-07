@@ -1,6 +1,6 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Switch, Route } from "react-router-dom";
-
+import { useSelector } from "react-redux";
 import {
   Blog,
   PostSingle,
@@ -24,16 +24,17 @@ import OAuth2RedirectHandler from "webapp/usr/components/OAuth2RedirectHandler";
 export default () => {
   const state = useCustomState()[0]
   
+
   return <>
     <Sidebar data={state.data.menu}/>
     <Header data={state.data.menu}/>
     <Switch>
       <Route path="/" exact component={Home} />
       <Route path="/survey" exact component={SurveyPage} />
-      <AuthRoute authenticated={null} path="/course" componet={Course}/>
+      <AuthRoute auth={"user"} path="/course" componet={Course}/>
       <Route path="/place" component={PlacePage}/>
       <Route path="/login" exact component={LoginForm}/>
-      <Route path="/manage" component={ManagePage} />
+      <AuthRoute auth={"admin"} path="/manage" component={ManagePage} />
 
       <Route path="/oauth2/redirect" component={OAuth2RedirectHandler}/>
       <Route path="/userprofile" component={UserProfile}/>

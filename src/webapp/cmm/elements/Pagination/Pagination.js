@@ -1,5 +1,5 @@
 import { Button } from '@material-ui/core'
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import styles from './Pagination.module.scss'
 
 export default ({ pageCount, pageNum, setPage, blockSize }) => {

@@ -1,4 +1,4 @@
-import React, { useState, useEffect} from "react";
+import React from "react";
 import { Button } from '@material-ui/core'
 import styles from "./Header.module.scss";
 import Layout from "../Layout/Layout";
@@ -12,13 +12,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { logout } from "webapp/_actions";
 
 export default ({ data = [] }) => {
-  const [sticky, setSticky] = useState(false);
   const actions = useCustomState()[1];
+  const authorization = useSelector(state => state.accountReducer.authorization)
   const currentUser = useSelector(state => state.accountReducer.currentUser)
   const dispatch = useDispatch()
-  const handleResize = () => {
-    setSticky(window.pageYOffset > 200 ? true : false);
-  };
   const handleLogout = (e) =>{
     e.preventDefault()
     localStorage.removeItem('accessToken')
@@ -28,16 +25,18 @@ export default ({ data = [] }) => {
 
   const menu = data.map((item, index) => {
     if (!item.children) {
+      if(item.auth&&item.auth!==authorization)
+        return <></>
       return (
         <li key={index}>
           <Link url={item.url} hoverStyle={{ color: THEME.color }}>
             {item.name}
           </Link>
-        </li>
+        </li>    
       );
-    } else {
+    } else {                      //36~52 서브메뉴 드롭다운 (기능추가 할시에)
       return (
-        <li key={index}>
+        <li key={index}>  
           <span>
             <Link url={item.url} hoverStyle={{ color: THEME.color }}>
               {item.name}
