@@ -9,7 +9,7 @@ export default ({ auth, componet: Component, render, ...rest }) => {
 
     return <Route
         {...rest} render={(props) =>
-            (auth === authorization) ? (render ? (render(props)) : (<Component />)) : (<Redirect to="/login" />)} 
+            false ? (render ? (render(props)) : (<Component />)) : (<Redirect to="/login" />)} 
             
             />
 
