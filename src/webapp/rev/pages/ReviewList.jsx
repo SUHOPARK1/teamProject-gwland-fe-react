@@ -6,8 +6,8 @@ import { useSelector } from "react-redux";
 
 export default ({ contentid }) => {
     const [reviewList, setReviewList] = useState([])
-    const listURL = `/review/list/`
-    const deleteURL = '/review/delete'
+    const listURL = process.env.REACT_APP_API_URL+'/review/list/'
+    const deleteURL = process.env.REACT_APP_API_URL+'/review/delete/'
     const currentNum = useSelector(state => state.accountReducer.currentNum)
     const starAvg = (reviewList) => {
         if(reviewList.length===0)

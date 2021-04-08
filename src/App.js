@@ -1,13 +1,6 @@
 import React from "react";
 import { Switch, Route } from "react-router-dom";
 import { useSelector } from "react-redux";
-import {
-  Blog,
-  PostSingle,
-  ServiceSingle,
-  MemberCard,
-  PortfolioSingle
-} from "./components/pages";
 import Home from './webapp/cmm/pages/Home'
 import SurveyPage from './webapp/svy/pages/SurveyPage'
 import Course from './webapp/crs/pages/Course'
@@ -15,58 +8,32 @@ import ManagePage from 'webapp/mng/pages/ManagePage'
 import Sidebar from './webapp/cmm/layouts/Sidebar/Sidebar'
 import Header from './webapp/cmm/layouts/Header/Header'
 import {useCustomState} from './webapp/cmm/state/State'
-import AuthRoute from "webapp/usr/components/AuthRoute";
 import LoginForm from "webapp/usr/pages/LoginForm";
 import PlacePage from "webapp/pce/pages/PlacePage";
 import UserProfile from "webapp/usr/pages/UserProfile";
 import OAuth2RedirectHandler from "webapp/usr/components/OAuth2RedirectHandler";
 import Manage404 from "webapp/mng/pages/Manage404";
+import UserRoute from "webapp/usr/components/UserRoute";
+import ManagerRoute from "webapp/mng/components/ManagerRoute";
 
 export default () => {
   const state = useCustomState()[0]
+  const currentAuth = useSelector(state=>state.accountReducer.authorization)
   
-
   return <>
     <Sidebar data={state.data.menu}/>
     <Header data={state.data.menu}/>
     <Switch>
       <Route path="/" exact component={Home} />
       <Route path="/survey" exact component={SurveyPage} />
-      <AuthRoute auth={"user"} path="/course" componet={Course}/>
       <Route path="/place" component={PlacePage}/>
       <Route path="/login" exact component={LoginForm}/>
-      <AuthRoute auth={"admin"} path="/manage" component={ManagePage} />
+      <UserRoute auth={currentAuth} path="/course" componet={Course}/>
+      <ManagerRoute auth={currentAuth} path="/manage" component={ManagePage} />
+      <Route path="/manage404" exact component={Manage404}/>
       <Route path="/oauth2/redirect" component={OAuth2RedirectHandler}/>
       <Route path="/userprofile" component={UserProfile}/>
-      <Route path="/manage404" component={Manage404}/>
-      <Route path="/blog/:post_id" exact component={PostSingle} />
-      <Route
-        path="/services/:service_id"
-        exact
-        component={ServiceSingle}
-      />
-      <Route path="/team/:member_id" exact component={MemberCard} />
-      <Route
-        path="/portfolio/:project_id"
-        exact
-        component={PortfolioSingle}
-      />
 
-      <Route path="/blog/cats/:category" exact>
-        <Blog sidebar="left" layout="grid" />
-      </Route>
-
-      <Route path="/blog/user/:author" exact>
-        <Blog sidebar="left" layout="grid" />
-      </Route>
-
-      <Route path="/blog/date/:posting_date" exact>
-        <Blog sidebar="left" layout="grid" />
-      </Route>
-
-      <Route path="/blog/search/:query" exact>
-        <Blog sidebar="left" layout="grid" />
-      </Route>
     </Switch>
   </>;
 };

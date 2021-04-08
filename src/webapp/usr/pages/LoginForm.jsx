@@ -2,18 +2,23 @@ import React from 'react'
 import styles from '../styles/Loginform.module.scss'
 
 export default ()=>{
+    
+    const redirectURL='http://localhost:3000/oauth2/redirect'
+    
+   
+
     const oauthNaver = e => {
         e.preventDefault()
-        window.location.href = "http://localhost:8080/oauth2/authorization/naver?redirect_uri=http://localhost:3000/oauth2/redirect"
+        window.location.href = `${process.env.REACT_APP_API_URL}/oauth2/authorization/naver?redirect_uri=${redirectURL}`
         }
     const oauthKakao = e => {
         e.preventDefault()
-        window.location.href = "http://localhost:8080/oauth2/authorization/kakao?redirect_uri=http://localhost:3000/oauth2/redirect"
+        window.location.href = `${process.env.REACT_APP_API_URL}/oauth2/authorization/kakao?redirect_uri=${redirectURL}`
         }
     
     const oauthGoogle = e => {
         e.preventDefault()
-        window.location.href = "http://localhost:8080/oauth2/authorization/google?redirect_uri=http://localhost:3000/oauth2/redirect"
+        window.location.href = `${process.env.REACT_APP_API_URL}/oauth2/authorization/google?redirect_uri=${redirectURL}`
         }
     
     return <>

@@ -10,11 +10,11 @@ import ReviewInput from "webapp/rev/pages/ReviewInput";
 export default () => {
   const { contentid } = useParams();
   const [place, setPlace] = useState({});
-  
+ const URL = 'http://localhost:8080'  
 
 
   useEffect(() => {
-    axios.get(`/place/dtl/${contentid}`)
+    axios.get(`${URL}/place/dtl/${contentid}`)
       .then((resp) => {
         setPlace(resp.data[0])
       })

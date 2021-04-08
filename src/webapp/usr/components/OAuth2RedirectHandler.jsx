@@ -19,7 +19,7 @@ export default ({location})=>{
 
     if(token){
         localStorage.setItem('accessToken', token)
-        axios.get('/user/one',{
+        axios.get('http://localhost:8080/user/one',{
             headers:{
                 Authorization:'Bearer '+ localStorage.getItem('accessToken')
             }

@@ -2,8 +2,9 @@ import axios from 'axios';
 import React, { useEffect } from 'react';
 
 export default () => {
+    
     useEffect(() => {
-        axios.get('http://localhost:8080/user/one', {
+        axios.get(`${ process.env.REACT_APP_API_URL}/user/one`, {
             headers: {
                 Authorization: 'Bearer ' + localStorage.getItem('accessToken')
             }

@@ -13,14 +13,13 @@ export default () => {
   const [currentPage, setCurrentPage] = useState(1)
   const pageSize = 10
   const blockSize = 10
-  const countURL = '/user/count'
-  const deleteURL = '/user/delete'
-  
+  const countURL = process.env.REACT_APP_API_URL+'/user/count'
+  const deleteURL = process.env.REACT_APP_API_URL+'/user/delete'
 
   useEffect(() => {
     axios.get(countURL)
       .then(respone => { setUserCount(respone.data) })
-    axios.get(`http://localhost:8080/user/list?page=${currentPage - 1}&size=${pageSize}`)
+    axios.get(`${process.env.REACT_APP_API_URL}/user/list?page=${currentPage - 1}&size=${pageSize}`)
       .then((response) => { setUserList(response.data.content) })
       .catch(err => { alert(err) })
   }, [currentPage])
@@ -34,12 +33,12 @@ export default () => {
         .then((response) => {
           console.log(response.data)
           alert(`${user.username}고객님 정보를 삭제하셨습니다.`)
-          window.location.reload(deleteURL)
+          window.location.reload()
         })
         .catch(err => { alert(err) })
     } else {
       alert('유저정보 삭제를 취소하셨습니다.')
-      window.location.reload(deleteURL)
+      window.location.reload()
     }
   })
   const title = <center><h2> 고객 정보 데이터</h2><h3>※ 구글은 성별과 연령대를 저장할 수 없습니다. (구글 정책사항)</h3> </center>

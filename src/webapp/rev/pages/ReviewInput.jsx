@@ -10,7 +10,7 @@ export default ({contentid}) => {
     const [textsection, setSection] = useState("")
     const [textlength, setLength] = useState(0)
     const nowtime = moment().format('YYYY.MM.DD.')
-    const inputUrl = '/review/save/'
+    const inputURL = process.env.REACT_APP_API_URL+'/review/save/'
     const authorization = useSelector(state => state.accountReducer.authorization)
     const currentName = useSelector(state => state.accountReducer.currentName)
     const currentNum = useSelector(state => state.accountReducer.currentNum)
@@ -32,7 +32,7 @@ export default ({contentid}) => {
             if(textsection==="" || rate===0){
                 alert('별점과 리뷰를 모두 작성해 주세요.')
             }else{
-                Axios.post(inputUrl, {
+                Axios.post(inputURL, {
                     contentid: contentid,
                     revContent: textsection,
                     revDate: nowtime,

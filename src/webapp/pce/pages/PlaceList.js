@@ -4,6 +4,7 @@ import { useCustomState } from "webapp/cmm/state/State";
 import { useParams } from "react-router-dom";
 import { animateScroll as scroll } from "react-scroll";
 
+
 import {
   BlogPagination,
   BlogSearch
@@ -17,14 +18,14 @@ import Button from 'components/elements/Button/Button'
 export default ({ sidebar = "left", layout = "grid", title = "title" }) => {
   const state = useCustomState()[0];
   const { category } = useParams();
-
   const [currentPage, setCurrentPage] = useState(1);
   const postsPerPage = useState(6)[0];
   const [placeArray, setPlaceArray] = useState([]);
+  const URL = 'http://localhost:8080'
 
   useEffect(() => {
     if (category) {
-      axios.get(`/place/cat/${category}`)
+      axios.get(`${URL}/place/cat/${category}`)
         .then((data) => {
           setPlaceArray(
             data.data.map((post, index) => {
@@ -38,7 +39,7 @@ export default ({ sidebar = "left", layout = "grid", title = "title" }) => {
           );
         })
     } else {
-      axios.get('/place/list')
+      axios.get(`${URL}/place/list`)
         .then(resp => {
           setPlaceArray(
             resp.data.map((post, index) => {
@@ -55,9 +56,7 @@ export default ({ sidebar = "left", layout = "grid", title = "title" }) => {
         })
     }
     setCurrentPage(1);
-  }, [
-
-  ]);
+  }, []);
 
   return (
     <>

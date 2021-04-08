@@ -1,4 +1,4 @@
-import AuthRoute from 'webapp/usr/components/AuthRoute'
+import AuthRoute from 'webapp/usr/components/UserRoute'
 import OAuth2RedirectHandler from 'webapp/usr/components/OAuth2RedirectHandler'
 
 import LoginForm from 'webapp/usr/pages/LoginForm'
