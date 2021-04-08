@@ -1,5 +1,5 @@
 import React from "react";
-import Header from 'webapp/cmm/widgets/Header/Header'
+import Header from 'webapp/cmm/widgets/WHeader/WHeader'
 
 export default () => {
 

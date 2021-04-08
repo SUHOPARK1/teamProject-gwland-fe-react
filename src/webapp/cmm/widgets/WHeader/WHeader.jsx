@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "./Header.module.scss";
+import styles from "./WHeader.module.scss";
 import Layout from "../../layouts/Layout/Layout";
 
 export default ({ children, img }) => {

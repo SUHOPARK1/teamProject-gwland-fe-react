@@ -4,6 +4,8 @@ import { Button } from '@material-ui/core'
 import styles from '../styles/SurveyForm.module.scss'
 
 export default () => {
+	const inputURL = process.env.REACT_APP_API_URL+'/survey/save'
+	
 	const [step, setStep] = useState(1)
 	const [gender, setGender] = useState('female')
 	const [age, setAge] = useState('20')
@@ -33,7 +35,7 @@ export default () => {
 	const handleLocation = (e) => { setLocation(e.target.value) }
 	const submitSvy = (e) => {
 		e.preventDefault()
-		Axios.post('/survey/save', {
+		Axios.post(inputURL, {
 			gender, age, season, partner, duration, location,
 			theme1: theme[0],
 			theme2: theme[1],

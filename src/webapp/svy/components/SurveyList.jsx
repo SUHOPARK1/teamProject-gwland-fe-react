@@ -5,6 +5,8 @@ import Pagination from 'webapp/cmm/elements/Pagination/Pagination'
 import Card from 'webapp/cmm/layouts/Card/Card'
 
 export default ()=>{
+    const URL = process.env.REACT_APP_API_URL
+    
     const arr = ['설문번호','성별','나이대','목적지','상세보기','삭제하기']
     const [surveyList,setSurveyList] = useState([]);
     const [surveyCount,setSurveyCount] = useState(0)
@@ -14,7 +16,7 @@ export default ()=>{
 
     const deleteSurvey = (item)=>{
         if(window.confirm('정말 설문조사 정보를 삭제하시겠습니까??')){
-            axios.delete(`http://localhost:8080/survey/delete`,{
+            axios.delete(`${URL}/survey/delete`,{
                 data:item
             })
             .then(
@@ -25,9 +27,9 @@ export default ()=>{
     }
 
     useEffect(()=>{
-        axios.get(`http://localhost:8080/survey/count`)
+        axios.get(`${URL}/survey/count`)
         .then(res=>{setSurveyCount(res.data)})
-        axios.get(`http://localhost:8080/survey/list?page=${currentPage-1}&size=${pageSize}`)
+        axios.get(`${URL}/survey/list?page=${currentPage-1}&size=${pageSize}`)
         .then(res=>{setSurveyList(res.data.content)})
     },[currentPage])
 
