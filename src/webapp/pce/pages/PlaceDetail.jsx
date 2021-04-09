@@ -14,9 +14,9 @@ export default () => {
 
 
   useEffect(() => {
-    axios.get(`${URL}/place/dtl/${contentid}`)
+    axios.get(`${URL}/place/one/${contentid}`)
       .then((resp) => {
-        setPlace(resp.data[0])
+        setPlace(resp.data)
       })
       .catch((err) => {
         alert(err)

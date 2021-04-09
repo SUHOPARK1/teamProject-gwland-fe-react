@@ -15,6 +15,7 @@ export default ()=>{
     const blockSize = 10
 
     const deleteSurvey = (item)=>{
+        console.log(item)
         if(window.confirm('정말 설문조사 정보를 삭제하시겠습니까??')){
             axios.delete(`${URL}/survey/delete`,{
                 data:item

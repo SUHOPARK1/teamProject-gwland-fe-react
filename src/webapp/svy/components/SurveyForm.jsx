@@ -4,8 +4,8 @@ import { Button } from '@material-ui/core'
 import styles from '../styles/SurveyForm.module.scss'
 
 export default () => {
-	const inputURL = process.env.REACT_APP_API_URL+'/survey/save'
-	
+	const inputURL = process.env.REACT_APP_API_URL + '/survey/save'
+
 	const [step, setStep] = useState(1)
 	const [gender, setGender] = useState('female')
 	const [age, setAge] = useState('20')
@@ -16,7 +16,12 @@ export default () => {
 	const [location, setLocation] = useState('강원도')
 
 	const handlePrev = () => { setStep(prevStep => prevStep - 1) }
-	const handleNext = () => { setStep(prevStep => prevStep + 1) }
+	const handleNext = () => { console.log(theme.length)
+		if(step===3 && ! theme.length){
+			alert(`1개이상 선택 해주세요.`)
+		}else{
+			setStep(prevStep => prevStep + 1) }
+		}
 	const handleGender = (e) => { setGender(e.target.value) }
 	const handleAge = (e) => { setAge(e.target.value) }
 	const handleSeason = (e) => { setSeason(e.target.value) }
@@ -35,15 +40,20 @@ export default () => {
 	const handleLocation = (e) => { setLocation(e.target.value) }
 	const submitSvy = (e) => {
 		e.preventDefault()
-		Axios.post(inputURL, {
-			gender, age, season, partner, duration, location,
-			theme1: theme[0],
-			theme2: theme[1],
-			theme3: theme[2]
-		}).then((respon) => { console.log(respon) })
-			.catch((err) => { alert(err) })
-	}
+		if (location !== '5') {
+			alert(`현재 속초밖에 서비스 되지 않습니다.`)
+		} else {
 
+
+			Axios.post(inputURL, {
+				gender, age, season, partner, duration, location,
+				theme1: theme[0],
+				theme2: theme[1],
+				theme3: theme[2]
+			}).then((respon) => { console.log(respon) })
+				.catch((err) => { alert(err) })
+		}
+	}
 	return <>
 		<div className={styles.wrap}>
 			<div>
@@ -273,7 +283,7 @@ export default () => {
 										<Button style={{
 											backgroundColor: "#B2CCFF",
 											padding: '10px 45px',
-											fontSize:'13px'
+											fontSize: '13px'
 										}}
 											size='large' variant='contained' onClick={handleNext}>다음</Button>
 									</div>
@@ -287,6 +297,10 @@ export default () => {
 												<li class="check_course">
 													<input type="radio" value="강원도" id="course6_1" checked={location === '강원도'} onChange={handleLocation} />
 													<label for="course6_1">강원도 전체</label>
+												</li>
+												<li class="check_course">
+													<input type="radio" value="5" id="course6_7" checked={location === '5'} onChange={handleLocation} />
+													<label for="course6_7">속초</label>
 												</li>
 												<li class="check_course">
 													<input type="radio" value="춘천" id="course6_2" checked={location === '춘천'} onChange={handleLocation} />
@@ -307,10 +321,6 @@ export default () => {
 												<li class="check_course">
 													<input type="radio" value="태백" id="course6_6" checked={location === '태백'} onChange={handleLocation} />
 													<label for="course6_6">태백</label>
-												</li>
-												<li class="check_course">
-													<input type="radio" value="속초" id="course6_7" checked={location === '속초'} onChange={handleLocation} />
-													<label for="course6_7">속초</label>
 												</li>
 												<li class="check_course">
 													<input type="radio" value="삼척" id="course6_8" checked={location === '삼척'} onChange={handleLocation} />
@@ -375,7 +385,7 @@ export default () => {
 										<Button style={{
 											backgroundColor: "#FFA7A7",
 											padding: '10px 45px',
-											fontSize:'13px'
+											fontSize: '13px'
 										}}
 											variant='contained' onClick={submitSvy}>결과 확인하기</Button>
 									</div>
