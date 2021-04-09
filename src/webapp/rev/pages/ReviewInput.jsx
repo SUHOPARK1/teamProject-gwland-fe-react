@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
-import Styles from '../sytles/ReviewInput.module.scss'
+
 import ReactStars from "react-rating-stars-component";
+import Styles from '../styles/ReviewInput.module.scss'
 import Axios from 'axios'
 import moment from 'moment';
 import { useSelector } from "react-redux";
@@ -43,9 +44,7 @@ export default ({contentid}) => {
                     alert('성공적으로 등록 하셨습니다.')
                     window.location.reload('/review/save')})
                     .catch((err) => { console.log(err) })}
-
             }
-
         }
 
     return <>

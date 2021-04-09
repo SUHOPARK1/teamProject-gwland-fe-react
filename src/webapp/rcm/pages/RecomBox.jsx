@@ -24,7 +24,7 @@ const ResultCourse = ({ recom }) => {
                                 marginTop: "10px", marginBottom: "10px",
                                 width: "250px", backgroundColor: "#B0B0B0", height: "4px" }} />
                             <center>
-                                <p style={{ width: "250px" }} >{item.place.title}</p>
+                                <p style={{ fontSize:"13px", width: "300px" }} >{item.place.title}</p>
                             </center>
                         </li> })}
         </ul>

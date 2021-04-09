@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import Styles from '../sytles/ReviewList.module.scss'
+import Styles from '../styles/ReviewList.module.scss'
 import StarIcon from '@material-ui/icons/Star'
 import axios from 'axios'
 import { useSelector } from "react-redux";
