@@ -25,7 +25,7 @@ export default () => {
     <Header data={state.data.menu}/>
     <Switch>
       <Route path="/" exact component={Home} />
-      <Route path="/survey" exact component={SurveyPage} />
+      <Route path="/survey" component={SurveyPage} />
       <Route path="/place" component={PlacePage}/>
       <Route path="/login" exact component={LoginForm}/>
       <UserRoute auth={currentAuth} path="/course" componet={Course}/>

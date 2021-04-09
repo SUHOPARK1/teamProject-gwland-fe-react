@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import Axios from 'axios'
 import { Button } from '@material-ui/core'
 import styles from '../styles/SurveyForm.module.scss'
+import { useHistory } from 'react-router'
 
 export default () => {
 	const inputURL = process.env.REACT_APP_API_URL + '/survey/save'
@@ -14,6 +15,7 @@ export default () => {
 	const [duration, setDuration] = useState('2')
 	const [theme, setTheme] = useState([])
 	const [location, setLocation] = useState('강원도')
+	const history = useHistory()
 
 	const handlePrev = () => { setStep(prevStep => prevStep - 1) }
 	const handleNext = () => { console.log(theme.length)
@@ -50,7 +52,7 @@ export default () => {
 				theme1: theme[0],
 				theme2: theme[1],
 				theme3: theme[2]
-			}).then((respon) => { console.log(respon) })
+			}).then((res)=>{history.push("/survey/result",{recomList:res.data})})
 				.catch((err) => { alert(err) })
 		}
 	}
