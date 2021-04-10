@@ -11,19 +11,19 @@ let state = {
         url: "/",
       },
       {
-        name: "설문하기",
+        name: "코스추천",
         url: "/survey",
-      },
-      {
-        name: "코스관리",
-        url: "/course",
       },
       {
         name: "관광지",
         url: "/place",
       },
+      {
+        name: "나의 코스관리",
+        url: "/course",
+      },
       
-      { name: "관리자",
+      { name: "관리자 페이지",
         url: "/manage",
         auth:"admin"},
     

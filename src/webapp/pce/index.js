@@ -1,6 +1,6 @@
-import BlogCard from "webapp/pce/BlogCard/BlogCard"
-import BlogCategories from "webapp/pce/BlogCategories/BlogCategories"
-import CardImage from "webapp/pce/CardImage/CardImage"
+import BlogCard from "webapp/pce/components/BlogCard/BlogCard"
+import BlogCategories from "webapp/pce/components/BlogCategories/BlogCategories"
+import CardImage from "webapp/pce/components/CardImage/CardImage"
 
 import Contacts2 from "webapp/pce/pages/Contacts2/Contacts2"
 

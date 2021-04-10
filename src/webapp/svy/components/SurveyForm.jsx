@@ -20,7 +20,7 @@ export default () => {
 	const handlePrev = () => { setStep(prevStep => prevStep - 1) }
 	const handleNext = () => { console.log(theme.length)
 		if(step===3 && ! theme.length){
-			alert(`1개이상 선택 해주세요.`)
+			alert(`테마를 1개 이상 선택해 주세요.`)
 		}else{
 			setStep(prevStep => prevStep + 1) }
 		}
@@ -43,7 +43,7 @@ export default () => {
 	const submitSvy = (e) => {
 		e.preventDefault()
 		if (location !== '5') {
-			alert(`현재 속초밖에 서비스 되지 않습니다.`)
+			alert(`현재 속초밖에 서비스 되지않습니다.`)
 		} else {
 
 

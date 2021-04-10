@@ -39,7 +39,8 @@ export default ({recom, index})=>{
                 <div className={styles.boxInfo}>
                     <div className={styles.title}><span>추천코스{index + 1}</span></div>
                     <div className={styles.score}><span>추천도:{ }</span></div>
-                    <div className={styles.btn_box}><Button>상세보기</Button><Button>저장하기</Button></div>
+                    <div className={styles.btn_box}><Button style={{fontSize:"13px"}}>상세보기</Button>
+                                                    <Button style={{fontSize:"13px"}}>저장하기</Button></div>
                 </div>
                 <ResultCourse recom={recom} />
             </div>
