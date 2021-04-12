@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 import Home from './webapp/cmm/pages/Home'
 import SurveyPage from './webapp/svy/pages/SurveyPage'
 import Course from './webapp/crs/pages/Course'
+import Mypage from './webapp/usr/pages/UserDetail'
 import ManagePage from 'webapp/mng/pages/ManagePage'
 import Sidebar from './webapp/cmm/layouts/Sidebar/Sidebar'
 import Header from './webapp/cmm/layouts/Header/Header'
@@ -28,7 +29,7 @@ export default () => {
       <Route path="/survey" component={SurveyPage} />
       <Route path="/place" component={PlacePage}/>
       <Route path="/login" exact component={LoginForm}/>
-      <UserRoute auth={currentAuth} path="/course" componet={Course}/>
+      <UserRoute auth={currentAuth} path="/mypage" componet={Mypage}/>
       <ManagerRoute auth={currentAuth} path="/manage" component={ManagePage} />
       <Route path="/manage404" exact component={Manage404}/>
       <Route path="/oauth2/redirect" component={OAuth2RedirectHandler}/>

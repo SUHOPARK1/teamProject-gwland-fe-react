@@ -38,17 +38,12 @@ export default () => {
   const [tel, setTel] = useState('')
   const [title, setTitle] = useState('')
   const [zipcode, setZipcode] = useState('')
-
+  const URL = process.env.REACT_APP_API_URL
   const save = e => {
     e.preventDefault()
-    axios.post(`/place/save`, {
+    axios.post(`${URL}/place/save`, {
       addr1, addr2, areacode, cat1, cat2, cat3, contentid, contenttypeid, createdtime, firstimage,
       firstimage2, mapx, mapy, mlevel, modifiedtime, sigungucode, tel, title, zipcode,
-      proxy: {
-        host: 'localhost',
-        port: 8080,
-        protocol: 'http'
-      }
     })
     .then(resp => {
       alert('저장 성공')
@@ -60,7 +55,7 @@ export default () => {
 
   return (
     <Fragment>
-      <Header img={state.data.header_bgs.contacts}>관광지 개별입력</Header>
+      <Header>관광지 개별입력</Header>
       <div>  
       <form className={classes.root} noValidate autoComplete="off">
       <TextField name="addr1" style={{ fontSize: '60px' }} label="addr1" placeholder="addr1" onChange = { e => { setAddr1(`${e.target.value}`) }}/>

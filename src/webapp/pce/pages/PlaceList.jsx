@@ -21,7 +21,7 @@ export default ({ sidebar = "left", layout = "grid", title = "title" }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const postsPerPage = useState(6)[0];
   const [placeArray, setPlaceArray] = useState([]);
-  const URL = 'http://localhost:8080'
+  const URL = process.env.REACT_APP_API_URL
 
   useEffect(() => {
     if (category) {
@@ -37,6 +37,8 @@ export default ({ sidebar = "left", layout = "grid", title = "title" }) => {
               );
             })
           );
+        }).catch((err) => {
+          alert(err)
         })
     } else {
       axios.get(`${URL}/place/list`)
@@ -73,7 +75,7 @@ export default ({ sidebar = "left", layout = "grid", title = "title" }) => {
         <aside className={styles.sidebar}>
           <BlogSearch />
           <BlogCategories data={state.data.categories} />
-          <Button to={'/place/add'}>{"관광지 추가"}</Button>
+          <Button to={`${URL}/place/add`}>{"관광지 추가"}</Button>
         </aside>
 
         <article>

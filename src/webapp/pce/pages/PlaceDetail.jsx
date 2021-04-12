@@ -10,7 +10,7 @@ import ReviewInput from "webapp/rev/pages/ReviewInput";
 export default () => {
   const { contentid } = useParams();
   const [place, setPlace] = useState({});
- const URL = 'http://localhost:8080'  
+ const URL = process.env.REACT_APP_API_URL  
 
 
   useEffect(() => {

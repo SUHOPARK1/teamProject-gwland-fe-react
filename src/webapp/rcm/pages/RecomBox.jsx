@@ -1,6 +1,9 @@
 import { Button, SvgIcon } from '@material-ui/core'
 import React from 'react'
+import { useSelector } from 'react-redux'
+import {useHistory} from 'react-router'
 import styles from '../styles/RecomBox.module.scss'
+import axios from 'axios'
 
 const ResultCourse = ({ recom }) => {
     return <div className={styles.boxCourse}>
@@ -33,14 +36,37 @@ const ResultCourse = ({ recom }) => {
 }
 
 export default ({recom, index})=>{
-            console.log(recom)
+    const currentUser = useSelector(state=>state.accountReducer.currentUser)
+    const history = useHistory()
+
+    const handleDetail = (e)=>{
+        e.preventDefault()
+        if(currentUser==null){
+            alert('로그인이 필요한 서비스입니다')
+        }else{
+            history.push("/course/detail")
+        }
+    }
+    const handleSave = (e)=>{
+        e.preventDefault()
+        if(currentUser==null){
+            alert('로그인이 필요한 서비스입니다')
+        }else{
+            axios.post(process.env.REACT_APP_API_URL+'/course/save',{
+                crsName:`나만의 코스${Math.ceil(Math.random()*100)}`,
+                places:Array.from(recom,v=>v.place.contentid),
+                num:currentUser.num
+            }).then(alert('저장 성공!'))
+            .catch(err=>alert(err))
+        }
+    }
     return <>
             <div className={styles.recomBox}>
                 <div className={styles.boxInfo}>
                     <div className={styles.title}><span>추천코스{index + 1}</span></div>
                     <div className={styles.score}><span>추천도:{ }</span></div>
-                    <div className={styles.btn_box}><Button style={{fontSize:"13px"}}>상세보기</Button>
-                                                    <Button style={{fontSize:"13px"}}>저장하기</Button></div>
+                    <div className={styles.btn_box}><Button style={{fontSize:"13px"} }onClick={handleDetail}>상세보기</Button>
+                                                    <Button style={{fontSize:"13px"} }onClick={handleSave}>저장하기</Button></div>
                 </div>
                 <ResultCourse recom={recom} />
             </div>

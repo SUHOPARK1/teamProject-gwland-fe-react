@@ -20,7 +20,7 @@ let state = {
       },
       {
         name: "나의 코스관리",
-        url: "/course",
+        url: "/mypage",
       },
       
       { name: "관리자 페이지",

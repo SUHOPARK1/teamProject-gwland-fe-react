@@ -21,13 +21,14 @@ const useStyles = makeStyles((theme) => ({
 export default () => {
   const state = useCustomState()[0];
   const classes = useStyles();
+  const URL = process.env.REACT_APP_API_URL
 
   const [contentid, setContentid] = useState('')
   const [overview, setOverview] = useState('')
 
   const save = e => {
     e.preventDefault()
-    axios.post(`/detail/save`, {
+    axios.post(`${URL}/detail/save`, {
       contentid, overview,
       proxy: {
         host: 'localhost',
@@ -45,7 +46,7 @@ export default () => {
 
   return (
     <Fragment>
-      <Header img={state.data.header_bgs.contacts}>관광지 개요 입력</Header>
+      <Header>관광지 개요 입력</Header>
       <div>  
       <form className={classes.root} noValidate autoComplete="off">
       <TextField name="contentid" label="contentid" placeholder="contentid" onChange = { e => { setContentid(`${e.target.value}`) }}/>

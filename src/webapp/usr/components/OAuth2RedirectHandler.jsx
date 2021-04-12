@@ -16,10 +16,11 @@ export default ({location})=>{
     const token = getUrlParameter('token',location.search);
     const error = getUrlParameter('error',location.search);
     const dispatch = useDispatch()
+    const URL = process.env.REACT_APP_API_URL
 
     if(token){
         localStorage.setItem('accessToken', token)
-        axios.get('http://localhost:8080/user/one',{
+        axios.get(`${URL}/user/one`,{
             headers:{
                 Authorization:'Bearer '+ localStorage.getItem('accessToken')
             }

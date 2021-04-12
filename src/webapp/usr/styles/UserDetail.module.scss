@@ -1,0 +1,74 @@
+.mypage_cont{
+    color: #000;
+    font-family: "Gulim", "Apple SD Gothic", Auto, sans-serif;
+    font-size: 14px;
+    line-height: 1.5;
+    margin: 0;
+    display: block;
+    max-height: 1000000em;
+    width: calc(100% - 210px);
+    padding: 0;
+    float: right;
+    & .n_section_block{
+        color: #000;
+        font-family: "Gulim", "Apple SD Gothic", Auto, sans-serif;
+        font-size: 14px;
+        line-height: 1.5;
+        margin: 0;
+        display: block;
+        max-height: 1000000em;
+        padding: 0;
+    }
+    & .n_section_title_first_info_views_area{
+        color: #000;
+        margin: 0;
+        padding: 0;
+        max-height: 1000000em;
+        border-bottom: 3px solid #000000;
+        padding-bottom: 14px;
+        margin-top: 48px;
+        font-family: "Gulim", "Apple SD Gothic", Auto, sans-serif;
+        line-height: 1.5;
+        font-size: 14px;
+        position: relative;
+        display: flex;
+        align-items: center;
+    }
+    & .tit{
+        color: #000;
+        line-height: 1.5;
+        margin: 0;
+        padding: 0;
+        border: 0;
+        outline: 0;
+        vertical-align: top;
+        background: transparent;
+        font-weight: normal;
+        max-height: 1000000em;
+        display: inline-block;
+        font-size: 24px;
+        font-family: "Musinsa", sans-serif !important;
+    }
+    & .n_table_table_row_my_info_modify{
+        color: #000;
+        border-spacing: 0;
+        margin: 20px;
+        padding: 0;
+        border: 0;
+        outline: 0;
+        vertical-align: top;
+        background: transparent;
+        max-height: 1000000em;
+        width: 100%;
+        font-family: "Gulim", "Apple SD Gothic", Auto, sans-serif;
+        line-height: 1.5;
+        font-size: 18px;
+        border-collapse: collapse;
+        table-layout: fixed;
+    }
+    
+
+
+}
+
+

@@ -19,7 +19,8 @@ const useStyles = makeStyles((theme) => ({
 export default () => {
   const classes = useStyles();
   const URL = 'http://api.visitkorea.or.kr/openapi/service/rest/KorService/areaBasedList?ServiceKey=ZaKVN0ME8OTmi3RpLmp%2Bzzl9aOxW4T2IP2v%2BRC2UoaDNDT30a5MuNKoeIgbY%2BIzjVE%2FKLMs%2BImOO3WLc78WCPA%3D%3D&areaCode=32&sigunguCode=5&numOfRows=177&pageNo=1&MobileOS=ETC&MobileApp=TestApp&_type=json'
-  
+  const originURL = process.env.REACT_APP_API_URL
+
   const saveAll = e => {
     e.preventDefault()
     fetch(URL, )
@@ -29,7 +30,7 @@ export default () => {
     })
     .then(resp => {
       const places = resp.response.body.items.item
-      axios.post('/place/saveAll', places)
+      axios.post(`${originURL}/place/saveAll`, places)
         .then(
           alert(`저장완료`)
         ) 
@@ -40,13 +41,17 @@ export default () => {
           fetch(URL2, )
           .then((res) => {
             return res.json()
+          }).catch((err) => {
+            alert(err)
           })
           .then(res => {
             const detail = res.response.body.items.item
             console.log(detail.contentid)
-            axios.post('/detail/save',{
+            axios.post(`${originURL}/detail/save`,{
               place:elem,
               overview:detail.overview.slice(0,100),
+            }).catch((err) => {
+              alert(err)
             })
             .then()
             .catch()
@@ -64,6 +69,7 @@ export default () => {
   
   return (
     <Fragment>
+      <div className={styles.wrapper}>
       <div className={classes.margin}>
         <span className="subtitle" style={{ color: THEME.color }}></span>
         
@@ -91,8 +97,8 @@ export default () => {
           href="/place/addoverview"
           className={classes.margin}
         >관광지 개요 입력</Button>
-        <span className={styles.divider} style={{ borderColor: THEME.color }} />
       </Layout>    
+      </div>
     </Fragment>
   );
 };
