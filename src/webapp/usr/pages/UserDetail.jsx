@@ -29,6 +29,22 @@ export default () => {
                             <col style={{ width: "190px" }} />
                         </colgroup>
                         <tbody > 
+                            <tr> 
+                                <th scope='row'>소셜 계정</th>
+                                <td>
+                                    <strong>
+                                        {user.email}
+                                    </strong>
+                                </td>
+                            </tr>
+                            <tr> 
+                                <th scope='row'>연결된 소셜</th>
+                                <td>
+                                    <strong>
+                                        {user.provider}
+                                    </strong>
+                                </td>
+                            </tr>
                             <tr > 
                                 <th scope='row'>이름</th>
                                 <td>
@@ -37,14 +53,7 @@ export default () => {
                                     </strong>
                                 </td>
                             </tr>
-                            <tr> 
-                                <th scope='row'>이메일</th>
-                                <td>
-                                    <strong>
-                                        {user.email}
-                                    </strong>
-                                </td>
-                            </tr>
+                           
                             <tr> 
                                 <th scope='row'>성별</th>
                                 <td>
@@ -61,14 +70,7 @@ export default () => {
                                     </strong>
                                 </td>
                             </tr>
-                            <tr> 
-                                <th scope='row'>가입한 소셜</th>
-                                <td>
-                                    <strong>
-                                        {user.provider}
-                                    </strong>
-                                </td>
-                            </tr>
+                            
                         </tbody>
                     </table>
                     <header className={styles.n_section_title_first_info_views_area}>

@@ -42,7 +42,7 @@ export default ({recom, index})=>{
     const handleDetail = (e)=>{
         e.preventDefault()
         if(currentUser==null){
-            alert('로그인이 필요한 서비스입니다')
+            alert('로그인이 필요한 서비스입니다.')
         }else{
             history.push("/course/detail")
         }
@@ -50,13 +50,13 @@ export default ({recom, index})=>{
     const handleSave = (e)=>{
         e.preventDefault()
         if(currentUser==null){
-            alert('로그인이 필요한 서비스입니다')
+            alert('로그인이 필요한 서비스입니다.')
         }else{
             axios.post(process.env.REACT_APP_API_URL+'/course/save',{
                 crsName:`나만의 코스${Math.ceil(Math.random()*100)}`,
                 places:Array.from(recom,v=>v.place.contentid),
                 num:currentUser.num
-            }).then(alert('저장 성공!'))
+            }).then(alert('성공적으로 저장 했습니다.'))
             .catch(err=>alert(err))
         }
     }

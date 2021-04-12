@@ -14,7 +14,7 @@ export default () => {
 	const [partner, setPartner] = useState('나혼자')
 	const [duration, setDuration] = useState('2')
 	const [theme, setTheme] = useState([])
-	const [location, setLocation] = useState('강원도')
+	const [location, setLocation] = useState('5')
 	const history = useHistory()
 
 	const handlePrev = () => { setStep(prevStep => prevStep - 1) }
