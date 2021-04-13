@@ -1,5 +1,5 @@
 import { Button, SvgIcon } from '@material-ui/core'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import {useHistory} from 'react-router'
 import styles from '../styles/RecomBox.module.scss'
@@ -36,6 +36,7 @@ const ResultCourse = ({ recom }) => {
 }
 
 export default ({recom, index})=>{
+    const [score,setScore] = useState(0)
     const currentUser = useSelector(state=>state.accountReducer.currentUser)
     const history = useHistory()
 
@@ -60,11 +61,18 @@ export default ({recom, index})=>{
             .catch(err=>alert(err))
         }
     }
+    console.log(recom)
+    useEffect(()=>{
+        for(let i=0;i<recom.length;i++){
+            setScore(score=>score+recom[i].score)
+        }
+    },[])
+
     return <>
             <div className={styles.recomBox}>
                 <div className={styles.boxInfo}>
                     <div className={styles.title}><span>추천코스{index + 1}</span></div>
-                    <div className={styles.score}><span>추천도:{ }</span></div>
+                    <div className={styles.score}><span>추천도:{Math.ceil(score/80*100)}%</span></div>
                     <div className={styles.btn_box}><Button style={{fontSize:"13px"} }onClick={handleDetail}>상세보기</Button>
                                                     <Button style={{fontSize:"13px"} }onClick={handleSave}>저장하기</Button></div>
                 </div>

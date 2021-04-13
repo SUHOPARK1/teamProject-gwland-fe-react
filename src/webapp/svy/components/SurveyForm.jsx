@@ -63,7 +63,9 @@ export default () => {
 					<div className={styles.contentInner}>
 						<form class="search_form">
 							<section class="selelct_wrap">
-								<br /><br /><br /><br /><br />
+								<br /><br /><br />
+								
+								<br /><br />
 								<div className={step === 1 ? styles.selected_step : styles.step}>
 									<dl class="select_box">
 										<dt class="select-question"><em class="Q-text">Q</em> 당신의 성별은 무엇인가요?</dt>
